@@ -26,17 +26,56 @@ Partial Class frmOperatori
         Me.RadCommandBar1 = New Telerik.WinControls.UI.RadCommandBar()
         Me.CommandBarRowElement1 = New Telerik.WinControls.UI.CommandBarRowElement()
         Me.CommandBarStripElement1 = New Telerik.WinControls.UI.CommandBarStripElement()
-        Me.cmdAddOperatore = New Telerik.WinControls.UI.CommandBarButton()
         Me.CommandBarSeparator1 = New Telerik.WinControls.UI.CommandBarSeparator()
-        Me.cmdModificaOperatore = New Telerik.WinControls.UI.CommandBarButton()
         Me.CommandBarSeparator2 = New Telerik.WinControls.UI.CommandBarSeparator()
-        Me.cmdCancellaOperatore = New Telerik.WinControls.UI.CommandBarButton()
         Me.CommandBarSeparator3 = New Telerik.WinControls.UI.CommandBarSeparator()
+        Me.CommandBarSeparator4 = New Telerik.WinControls.UI.CommandBarSeparator()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.CommandBarStripElement2 = New Telerik.WinControls.UI.CommandBarStripElement()
+        Me.RGBAggiungiOperatore = New Telerik.WinControls.UI.RadGroupBox()
+        Me.btnApriFileFirma = New Telerik.WinControls.UI.RadButton()
+        Me.lblFirmaOperatore = New Telerik.WinControls.UI.RadLabel()
+        Me.txtNewNomeOperatore = New Telerik.WinControls.UI.RadTextBox()
+        Me.lblNuovoNomeOperatore = New Telerik.WinControls.UI.RadLabel()
+        Me.RGBCambiaNomeOperatore = New Telerik.WinControls.UI.RadGroupBox()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.cmbSelezionaOperatore = New System.Windows.Forms.ComboBox()
+        Me.lblSelezionaOperatore = New Telerik.WinControls.UI.RadLabel()
+        Me.lblUpdateNome = New Telerik.WinControls.UI.RadLabel()
+        Me.lblUpdateCognome = New Telerik.WinControls.UI.RadLabel()
+        Me.txtUpdateNome = New Telerik.WinControls.UI.RadTextBox()
+        Me.txtUpdateCognome = New Telerik.WinControls.UI.RadTextBox()
+        Me.rgbCancellaOperatore = New Telerik.WinControls.UI.RadGroupBox()
+        Me.lblCancellaNomeOperatore = New Telerik.WinControls.UI.RadLabel()
+        Me.txtCancellaOperatore = New Telerik.WinControls.UI.RadTextBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.cmdAddOperatore = New Telerik.WinControls.UI.CommandBarButton()
+        Me.cmdModificaOperatore = New Telerik.WinControls.UI.CommandBarButton()
+        Me.cmdCancellaOperatore = New Telerik.WinControls.UI.CommandBarButton()
         Me.cmdChiudi = New Telerik.WinControls.UI.CommandBarButton()
-        Me.CommandBarSeparator4 = New Telerik.WinControls.UI.CommandBarSeparator()
+        Me.lblNuovoCognomeOperatore = New Telerik.WinControls.UI.RadLabel()
+        Me.txtNewCognomeOperatore = New Telerik.WinControls.UI.RadTextBox()
         CType(Me.RadCommandBar1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RGBAggiungiOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RGBAggiungiOperatore.SuspendLayout()
+        CType(Me.btnApriFileFirma, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblFirmaOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNewNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblNuovoNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RGBCambiaNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RGBCambiaNomeOperatore.SuspendLayout()
+        CType(Me.lblSelezionaOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblUpdateNome, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblUpdateCognome, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtUpdateNome, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtUpdateCognome, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rgbCancellaOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rgbCancellaOperatore.SuspendLayout()
+        CType(Me.lblCancellaNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCancellaOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblNuovoCognomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNewCognomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RadCommandBar1
@@ -45,13 +84,13 @@ Partial Class frmOperatori
         Me.RadCommandBar1.Location = New System.Drawing.Point(0, 0)
         Me.RadCommandBar1.Name = "RadCommandBar1"
         Me.RadCommandBar1.Rows.AddRange(New Telerik.WinControls.UI.CommandBarRowElement() {Me.CommandBarRowElement1})
-        Me.RadCommandBar1.Size = New System.Drawing.Size(662, 56)
+        Me.RadCommandBar1.Size = New System.Drawing.Size(488, 52)
         Me.RadCommandBar1.TabIndex = 0
-        Me.RadCommandBar1.Text = "RadCommandBar1"
         '
         'CommandBarRowElement1
         '
         Me.CommandBarRowElement1.MinSize = New System.Drawing.Size(25, 25)
+        Me.CommandBarRowElement1.Name = "CommandBarRowElement1"
         Me.CommandBarRowElement1.Strips.AddRange(New Telerik.WinControls.UI.CommandBarStripElement() {Me.CommandBarStripElement1})
         Me.CommandBarRowElement1.Text = ""
         '
@@ -61,38 +100,13 @@ Partial Class frmOperatori
         Me.CommandBarStripElement1.Items.AddRange(New Telerik.WinControls.UI.RadCommandBarBaseItem() {Me.cmdAddOperatore, Me.CommandBarSeparator1, Me.cmdModificaOperatore, Me.CommandBarSeparator2, Me.cmdCancellaOperatore, Me.CommandBarSeparator3, Me.cmdChiudi, Me.CommandBarSeparator4})
         Me.CommandBarStripElement1.Name = "CommandBarStripElement1"
         '
-        'cmdAddOperatore
-        '
-        Me.cmdAddOperatore.AccessibleDescription = "Aggiungi Operatore"
-        Me.cmdAddOperatore.AccessibleName = "Aggiungi Operatore"
-        Me.cmdAddOperatore.DisplayName = "CommandBarButton1"
-        Me.cmdAddOperatore.DrawText = True
-        Me.cmdAddOperatore.Image = CType(resources.GetObject("cmdAddOperatore.Image"), System.Drawing.Image)
-        Me.cmdAddOperatore.Name = "cmdAddOperatore"
-        Me.cmdAddOperatore.Text = "Aggiungi Operatore"
-        Me.cmdAddOperatore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.cmdAddOperatore.Visibility = Telerik.WinControls.ElementVisibility.Visible
-        '
         'CommandBarSeparator1
         '
         Me.CommandBarSeparator1.AccessibleDescription = "CommandBarSeparator1"
         Me.CommandBarSeparator1.AccessibleName = "CommandBarSeparator1"
         Me.CommandBarSeparator1.DisplayName = "CommandBarSeparator1"
         Me.CommandBarSeparator1.Name = "CommandBarSeparator1"
-        Me.CommandBarSeparator1.Visibility = Telerik.WinControls.ElementVisibility.Visible
         Me.CommandBarSeparator1.VisibleInOverflowMenu = False
-        '
-        'cmdModificaOperatore
-        '
-        Me.cmdModificaOperatore.AccessibleDescription = "Modifica Operatore"
-        Me.cmdModificaOperatore.AccessibleName = "Modifica Operatore"
-        Me.cmdModificaOperatore.DisplayName = "CommandBarButton1"
-        Me.cmdModificaOperatore.DrawText = True
-        Me.cmdModificaOperatore.Image = CType(resources.GetObject("cmdModificaOperatore.Image"), System.Drawing.Image)
-        Me.cmdModificaOperatore.Name = "cmdModificaOperatore"
-        Me.cmdModificaOperatore.Text = "Modifica Operatore"
-        Me.cmdModificaOperatore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.cmdModificaOperatore.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'CommandBarSeparator2
         '
@@ -100,20 +114,7 @@ Partial Class frmOperatori
         Me.CommandBarSeparator2.AccessibleName = "CommandBarSeparator2"
         Me.CommandBarSeparator2.DisplayName = "CommandBarSeparator2"
         Me.CommandBarSeparator2.Name = "CommandBarSeparator2"
-        Me.CommandBarSeparator2.Visibility = Telerik.WinControls.ElementVisibility.Visible
         Me.CommandBarSeparator2.VisibleInOverflowMenu = False
-        '
-        'cmdCancellaOperatore
-        '
-        Me.cmdCancellaOperatore.AccessibleDescription = "Cancella Operatore"
-        Me.cmdCancellaOperatore.AccessibleName = "Cancella Operatore"
-        Me.cmdCancellaOperatore.DisplayName = "CommandBarButton1"
-        Me.cmdCancellaOperatore.DrawText = True
-        Me.cmdCancellaOperatore.Image = CType(resources.GetObject("cmdCancellaOperatore.Image"), System.Drawing.Image)
-        Me.cmdCancellaOperatore.Name = "cmdCancellaOperatore"
-        Me.cmdCancellaOperatore.Text = "Cancella Operatore"
-        Me.cmdCancellaOperatore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.cmdCancellaOperatore.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'CommandBarSeparator3
         '
@@ -121,14 +122,21 @@ Partial Class frmOperatori
         Me.CommandBarSeparator3.AccessibleName = "CommandBarSeparator3"
         Me.CommandBarSeparator3.DisplayName = "CommandBarSeparator3"
         Me.CommandBarSeparator3.Name = "CommandBarSeparator3"
-        Me.CommandBarSeparator3.Visibility = Telerik.WinControls.ElementVisibility.Visible
         Me.CommandBarSeparator3.VisibleInOverflowMenu = False
+        '
+        'CommandBarSeparator4
+        '
+        Me.CommandBarSeparator4.AccessibleDescription = "CommandBarSeparator4"
+        Me.CommandBarSeparator4.AccessibleName = "CommandBarSeparator4"
+        Me.CommandBarSeparator4.DisplayName = "CommandBarSeparator4"
+        Me.CommandBarSeparator4.Name = "CommandBarSeparator4"
+        Me.CommandBarSeparator4.VisibleInOverflowMenu = False
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 311)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 500)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(662, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(488, 22)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -137,38 +145,257 @@ Partial Class frmOperatori
         Me.CommandBarStripElement2.DisplayName = "CommandBarStripElement2"
         Me.CommandBarStripElement2.Name = "CommandBarStripElement2"
         '
+        'RGBAggiungiOperatore
+        '
+        Me.RGBAggiungiOperatore.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RGBAggiungiOperatore.Controls.Add(Me.txtNewCognomeOperatore)
+        Me.RGBAggiungiOperatore.Controls.Add(Me.lblNuovoCognomeOperatore)
+        Me.RGBAggiungiOperatore.Controls.Add(Me.btnApriFileFirma)
+        Me.RGBAggiungiOperatore.Controls.Add(Me.PictureBox1)
+        Me.RGBAggiungiOperatore.Controls.Add(Me.lblFirmaOperatore)
+        Me.RGBAggiungiOperatore.Controls.Add(Me.txtNewNomeOperatore)
+        Me.RGBAggiungiOperatore.Controls.Add(Me.lblNuovoNomeOperatore)
+        Me.RGBAggiungiOperatore.HeaderText = "Aggiungi Operatore BBG"
+        Me.RGBAggiungiOperatore.Location = New System.Drawing.Point(8, 70)
+        Me.RGBAggiungiOperatore.Name = "RGBAggiungiOperatore"
+        Me.RGBAggiungiOperatore.Size = New System.Drawing.Size(468, 194)
+        Me.RGBAggiungiOperatore.TabIndex = 2
+        Me.RGBAggiungiOperatore.Text = "Aggiungi Operatore BBG"
+        '
+        'btnApriFileFirma
+        '
+        Me.btnApriFileFirma.Location = New System.Drawing.Point(375, 98)
+        Me.btnApriFileFirma.Name = "btnApriFileFirma"
+        Me.btnApriFileFirma.Size = New System.Drawing.Size(72, 68)
+        Me.btnApriFileFirma.TabIndex = 4
+        Me.btnApriFileFirma.Text = "Apri File Firma Operatore"
+        Me.btnApriFileFirma.TextWrap = True
+        '
+        'lblFirmaOperatore
+        '
+        Me.lblFirmaOperatore.AutoSize = False
+        Me.lblFirmaOperatore.Location = New System.Drawing.Point(16, 120)
+        Me.lblFirmaOperatore.Name = "lblFirmaOperatore"
+        Me.lblFirmaOperatore.Size = New System.Drawing.Size(105, 18)
+        Me.lblFirmaOperatore.TabIndex = 2
+        Me.lblFirmaOperatore.Text = "Firma Operatore"
+        Me.lblFirmaOperatore.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtNewNomeOperatore
+        '
+        Me.txtNewNomeOperatore.Location = New System.Drawing.Point(125, 29)
+        Me.txtNewNomeOperatore.Name = "txtNewNomeOperatore"
+        Me.txtNewNomeOperatore.Size = New System.Drawing.Size(322, 20)
+        Me.txtNewNomeOperatore.TabIndex = 1
+        '
+        'lblNuovoNomeOperatore
+        '
+        Me.lblNuovoNomeOperatore.AutoSize = False
+        Me.lblNuovoNomeOperatore.Location = New System.Drawing.Point(21, 29)
+        Me.lblNuovoNomeOperatore.Name = "lblNuovoNomeOperatore"
+        Me.lblNuovoNomeOperatore.Size = New System.Drawing.Size(100, 18)
+        Me.lblNuovoNomeOperatore.TabIndex = 0
+        Me.lblNuovoNomeOperatore.Text = "Nome Operatore"
+        Me.lblNuovoNomeOperatore.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'RGBCambiaNomeOperatore
+        '
+        Me.RGBCambiaNomeOperatore.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RGBCambiaNomeOperatore.Controls.Add(Me.txtUpdateCognome)
+        Me.RGBCambiaNomeOperatore.Controls.Add(Me.txtUpdateNome)
+        Me.RGBCambiaNomeOperatore.Controls.Add(Me.lblUpdateCognome)
+        Me.RGBCambiaNomeOperatore.Controls.Add(Me.lblUpdateNome)
+        Me.RGBCambiaNomeOperatore.Controls.Add(Me.lblSelezionaOperatore)
+        Me.RGBCambiaNomeOperatore.Controls.Add(Me.cmbSelezionaOperatore)
+        Me.RGBCambiaNomeOperatore.HeaderText = "Cambia Nome Operatore BBG"
+        Me.RGBCambiaNomeOperatore.Location = New System.Drawing.Point(11, 279)
+        Me.RGBCambiaNomeOperatore.Name = "RGBCambiaNomeOperatore"
+        Me.RGBCambiaNomeOperatore.Size = New System.Drawing.Size(464, 123)
+        Me.RGBCambiaNomeOperatore.TabIndex = 3
+        Me.RGBCambiaNomeOperatore.Text = "Cambia Nome Operatore BBG"
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "Seleziona Immagine Firma"
+        '
+        'cmbSelezionaOperatore
+        '
+        Me.cmbSelezionaOperatore.FormattingEnabled = True
+        Me.cmbSelezionaOperatore.Location = New System.Drawing.Point(122, 27)
+        Me.cmbSelezionaOperatore.Name = "cmbSelezionaOperatore"
+        Me.cmbSelezionaOperatore.Size = New System.Drawing.Size(322, 21)
+        Me.cmbSelezionaOperatore.TabIndex = 0
+        '
+        'lblSelezionaOperatore
+        '
+        Me.lblSelezionaOperatore.AutoSize = False
+        Me.lblSelezionaOperatore.Location = New System.Drawing.Point(1, 30)
+        Me.lblSelezionaOperatore.Name = "lblSelezionaOperatore"
+        Me.lblSelezionaOperatore.Size = New System.Drawing.Size(117, 18)
+        Me.lblSelezionaOperatore.TabIndex = 1
+        Me.lblSelezionaOperatore.Text = "Seleziona Operatore"
+        Me.lblSelezionaOperatore.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblUpdateNome
+        '
+        Me.lblUpdateNome.AutoSize = False
+        Me.lblUpdateNome.Location = New System.Drawing.Point(13, 57)
+        Me.lblUpdateNome.Name = "lblUpdateNome"
+        Me.lblUpdateNome.Size = New System.Drawing.Size(105, 18)
+        Me.lblUpdateNome.TabIndex = 2
+        Me.lblUpdateNome.Text = "Nuovo Nome"
+        Me.lblUpdateNome.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblUpdateCognome
+        '
+        Me.lblUpdateCognome.AutoSize = False
+        Me.lblUpdateCognome.Location = New System.Drawing.Point(18, 84)
+        Me.lblUpdateCognome.Name = "lblUpdateCognome"
+        Me.lblUpdateCognome.Size = New System.Drawing.Size(100, 18)
+        Me.lblUpdateCognome.TabIndex = 3
+        Me.lblUpdateCognome.Text = "Nuovo Cognome"
+        Me.lblUpdateCognome.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtUpdateNome
+        '
+        Me.txtUpdateNome.Location = New System.Drawing.Point(122, 56)
+        Me.txtUpdateNome.Name = "txtUpdateNome"
+        Me.txtUpdateNome.Size = New System.Drawing.Size(322, 20)
+        Me.txtUpdateNome.TabIndex = 4
+        '
+        'txtUpdateCognome
+        '
+        Me.txtUpdateCognome.Location = New System.Drawing.Point(122, 84)
+        Me.txtUpdateCognome.Name = "txtUpdateCognome"
+        Me.txtUpdateCognome.Size = New System.Drawing.Size(322, 20)
+        Me.txtUpdateCognome.TabIndex = 5
+        '
+        'rgbCancellaOperatore
+        '
+        Me.rgbCancellaOperatore.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.rgbCancellaOperatore.Controls.Add(Me.txtCancellaOperatore)
+        Me.rgbCancellaOperatore.Controls.Add(Me.lblCancellaNomeOperatore)
+        Me.rgbCancellaOperatore.HeaderText = "Cancella Operatore Dal Database"
+        Me.rgbCancellaOperatore.Location = New System.Drawing.Point(11, 418)
+        Me.rgbCancellaOperatore.Name = "rgbCancellaOperatore"
+        Me.rgbCancellaOperatore.Size = New System.Drawing.Size(464, 70)
+        Me.rgbCancellaOperatore.TabIndex = 4
+        Me.rgbCancellaOperatore.Text = "Cancella Operatore Dal Database"
+        '
+        'lblCancellaNomeOperatore
+        '
+        Me.lblCancellaNomeOperatore.AutoSize = False
+        Me.lblCancellaNomeOperatore.Location = New System.Drawing.Point(18, 27)
+        Me.lblCancellaNomeOperatore.Name = "lblCancellaNomeOperatore"
+        Me.lblCancellaNomeOperatore.Size = New System.Drawing.Size(100, 18)
+        Me.lblCancellaNomeOperatore.TabIndex = 0
+        Me.lblCancellaNomeOperatore.Text = "Nome e Cognome"
+        Me.lblCancellaNomeOperatore.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtCancellaOperatore
+        '
+        Me.txtCancellaOperatore.Location = New System.Drawing.Point(122, 26)
+        Me.txtCancellaOperatore.Name = "txtCancellaOperatore"
+        Me.txtCancellaOperatore.Size = New System.Drawing.Size(322, 20)
+        Me.txtCancellaOperatore.TabIndex = 1
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(126, 98)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(233, 68)
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
+        'cmdAddOperatore
+        '
+        Me.cmdAddOperatore.DisplayName = "CommandBarButton1"
+        Me.cmdAddOperatore.DrawText = True
+        Me.cmdAddOperatore.Image = CType(resources.GetObject("cmdAddOperatore.Image"), System.Drawing.Image)
+        Me.cmdAddOperatore.Name = "cmdAddOperatore"
+        Me.cmdAddOperatore.Text = "Aggiungi Operatore"
+        Me.cmdAddOperatore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'cmdModificaOperatore
+        '
+        Me.cmdModificaOperatore.DisplayName = "CommandBarButton1"
+        Me.cmdModificaOperatore.DrawText = True
+        Me.cmdModificaOperatore.Image = CType(resources.GetObject("cmdModificaOperatore.Image"), System.Drawing.Image)
+        Me.cmdModificaOperatore.Name = "cmdModificaOperatore"
+        Me.cmdModificaOperatore.Text = "Modifica Operatore"
+        Me.cmdModificaOperatore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'cmdCancellaOperatore
+        '
+        Me.cmdCancellaOperatore.DisplayName = "CommandBarButton1"
+        Me.cmdCancellaOperatore.DrawText = True
+        Me.cmdCancellaOperatore.Image = CType(resources.GetObject("cmdCancellaOperatore.Image"), System.Drawing.Image)
+        Me.cmdCancellaOperatore.Name = "cmdCancellaOperatore"
+        Me.cmdCancellaOperatore.Text = "Cancella Operatore"
+        Me.cmdCancellaOperatore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'cmdChiudi
         '
-        Me.cmdChiudi.AccessibleDescription = "Chiudi"
-        Me.cmdChiudi.AccessibleName = "Chiudi"
         Me.cmdChiudi.DisplayName = "CommandBarButton1"
         Me.cmdChiudi.DrawText = True
         Me.cmdChiudi.Image = CType(resources.GetObject("cmdChiudi.Image"), System.Drawing.Image)
         Me.cmdChiudi.Name = "cmdChiudi"
         Me.cmdChiudi.Text = "Chiudi"
         Me.cmdChiudi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.cmdChiudi.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
-        'CommandBarSeparator4
+        'lblNuovoCognomeOperatore
         '
-        Me.CommandBarSeparator4.AccessibleDescription = "CommandBarSeparator4"
-        Me.CommandBarSeparator4.AccessibleName = "CommandBarSeparator4"
-        Me.CommandBarSeparator4.DisplayName = "CommandBarSeparator4"
-        Me.CommandBarSeparator4.Name = "CommandBarSeparator4"
-        Me.CommandBarSeparator4.Text = ""
-        Me.CommandBarSeparator4.Visibility = Telerik.WinControls.ElementVisibility.Visible
-        Me.CommandBarSeparator4.VisibleInOverflowMenu = False
+        Me.lblNuovoCognomeOperatore.Location = New System.Drawing.Point(12, 63)
+        Me.lblNuovoCognomeOperatore.Name = "lblNuovoCognomeOperatore"
+        Me.lblNuovoCognomeOperatore.Size = New System.Drawing.Size(109, 18)
+        Me.lblNuovoCognomeOperatore.TabIndex = 5
+        Me.lblNuovoCognomeOperatore.Text = "Cognome Operatore"
+        '
+        'txtNewCognomeOperatore
+        '
+        Me.txtNewCognomeOperatore.Location = New System.Drawing.Point(125, 62)
+        Me.txtNewCognomeOperatore.Name = "txtNewCognomeOperatore"
+        Me.txtNewCognomeOperatore.Size = New System.Drawing.Size(322, 20)
+        Me.txtNewCognomeOperatore.TabIndex = 6
         '
         'frmOperatori
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(662, 333)
+        Me.ClientSize = New System.Drawing.Size(488, 522)
+        Me.Controls.Add(Me.rgbCancellaOperatore)
+        Me.Controls.Add(Me.RGBCambiaNomeOperatore)
+        Me.Controls.Add(Me.RGBAggiungiOperatore)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.RadCommandBar1)
         Me.Name = "frmOperatori"
         Me.Text = "Gestione Operatori"
         CType(Me.RadCommandBar1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RGBAggiungiOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RGBAggiungiOperatore.ResumeLayout(False)
+        Me.RGBAggiungiOperatore.PerformLayout()
+        CType(Me.btnApriFileFirma, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblFirmaOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNewNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblNuovoNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RGBCambiaNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RGBCambiaNomeOperatore.ResumeLayout(False)
+        Me.RGBCambiaNomeOperatore.PerformLayout()
+        CType(Me.lblSelezionaOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblUpdateNome, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblUpdateCognome, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtUpdateNome, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtUpdateCognome, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rgbCancellaOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.rgbCancellaOperatore.ResumeLayout(False)
+        Me.rgbCancellaOperatore.PerformLayout()
+        CType(Me.lblCancellaNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCancellaOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblNuovoCognomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNewCognomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -187,4 +414,23 @@ Partial Class frmOperatori
     Friend WithEvents CommandBarStripElement2 As Telerik.WinControls.UI.CommandBarStripElement
     Friend WithEvents cmdChiudi As Telerik.WinControls.UI.CommandBarButton
     Friend WithEvents CommandBarSeparator4 As Telerik.WinControls.UI.CommandBarSeparator
+    Friend WithEvents RGBAggiungiOperatore As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents lblNuovoNomeOperatore As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents txtNewNomeOperatore As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents RGBCambiaNomeOperatore As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents lblFirmaOperatore As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnApriFileFirma As Telerik.WinControls.UI.RadButton
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents lblSelezionaOperatore As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents cmbSelezionaOperatore As ComboBox
+    Friend WithEvents lblUpdateNome As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents lblUpdateCognome As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents txtUpdateCognome As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents txtUpdateNome As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents rgbCancellaOperatore As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents txtCancellaOperatore As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents lblCancellaNomeOperatore As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents lblNuovoCognomeOperatore As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents txtNewCognomeOperatore As Telerik.WinControls.UI.RadTextBox
 End Class
