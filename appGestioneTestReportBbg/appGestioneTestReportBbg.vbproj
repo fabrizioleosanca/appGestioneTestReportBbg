@@ -1,0 +1,809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CF8D709-4BBB-4195-BEB8-F1C23C7C9B79}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>appGestioneTestReportBbg</RootNamespace>
+    <AssemblyName>appGestioneTestReportBbg</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ProductName>Gestione Test Report</ProductName>
+    <PublisherName>BBG Metalmeccanica</PublisherName>
+    <SuiteName>Gestione Test Report</SuiteName>
+    <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>appGestioneTestReportBbg.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>appGestioneTestReportBbg.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Immagini\Archivio.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>9BACDCB2FFBC2641356738AF3A31B91376094137</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>appGestioneTestReportBbg_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.TemplateEngine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.TemplateEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Viewing.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Enterprise.Viewing.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DataWeb.TurboDB.Native20.Provider">
+      <HintPath>..\..\ImportaDatiDaAmica\ImportaDatiDaAmica\bin\Debug\DataWeb.TurboDB.Native20.Provider.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\EnterpriseLibrary6\Enterprise library binaries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Reporting, Version=7.2.13.1016, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\Reporting Q3 2013\Bin\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.WebForms, Version=7.2.13.1016, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\Reporting Q3 2013\Bin\Telerik.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.WinForms, Version=7.2.13.1016, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\Reporting Q3 2013\Bin\Telerik.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.PivotGrid, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.PivotGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadChart, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.RadChart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadDock, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.RadDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RichTextBox, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.RichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Scheduler, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.SpellChecker, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.Windows7, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.Themes.Windows7.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI.Design, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\Telerik.WinControls.UI.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\TelerikCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikData, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\RadControls for WinForms Q3 2013\Bin40\TelerikData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="appGestioneTestReportBbg" />
+    <Import Include="appGestioneTestReportBbg.dbGestioneTestReportDataSetDueTableAdapters" />
+    <Import Include="appGestioneTestReportBbg.dbGestTestReportDataSetTableAdapters" />
+    <Import Include="appGestioneTestReportBbg.My" />
+    <Import Include="appGestioneTestReportBbg.My.Resources" />
+    <Import Include="CrystalDecisions" />
+    <Import Include="CrystalDecisions.CrystalReports" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aggiungiStrumMatForn.Designer.vb">
+      <DependentUpon>aggiungiStrumMatForn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="aggiungiStrumMatForn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dsNumeroLottoMateriale.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsNumeroLottoMateriale.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsNumeroLottoMateriale.vb">
+      <DependentUpon>dsNumeroLottoMateriale.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestioneLottoMaterialeNuovo.Designer.vb">
+      <DependentUpon>frmGestioneLottoMaterialeNuovo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestioneLottoMaterialeNuovo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNuovoDaEsistenteTestReportTre.Designer.vb">
+      <DependentUpon>frmNuovoDaEsistenteTestReportTre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmNuovoDaEsistenteTestReportTre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dbGestioneTestReportDataSetDue.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbGestioneTestReportDataSetDue.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dbGestioneTestReportDataSetDue.vb">
+      <DependentUpon>dbGestioneTestReportDataSetDue.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmAggiornaTestReportTre.Designer.vb">
+      <DependentUpon>frmAggiornaTestReportTre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAggiornaTestReportTre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReportBBGNoParam.vb">
+      <DependentUpon>CrystalReportBBGNoParam.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CrystalReportBBG.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportBBG.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dbGestTestReportDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbGestTestReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dbGestTestReportDataSet.vb">
+      <DependentUpon>dbGestTestReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOperatori.Designer.vb">
+      <DependentUpon>frmOperatori.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmOperatori.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistraTestReportTre.Designer.vb">
+      <DependentUpon>frmRegistraTestReportTre.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistraTestReportTre.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStampaPreview.Designer.vb">
+      <DependentUpon>frmStampaPreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStampaPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestReportPdfAutomatico.Designer.vb">
+      <DependentUpon>frmTestReportPdfAutomatico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestReportPdfAutomatico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gestioneLottoMateriale.Designer.vb">
+      <DependentUpon>gestioneLottoMateriale.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gestioneLottoMateriale.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modProp.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MyItalianRadGridLocalizationProvider.vb" />
+    <Compile Include="Program.vb" />
+    <Compile Include="TelerikReportBBG.Designer.vb">
+      <DependentUpon>TelerikReportBBG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TelerikReportBBG.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="aggiungiStrumMatForn.resx">
+      <DependentUpon>aggiungiStrumMatForn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestioneLottoMaterialeNuovo.resx">
+      <DependentUpon>frmGestioneLottoMaterialeNuovo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuovoDaEsistenteTestReportTre.resx">
+      <DependentUpon>frmNuovoDaEsistenteTestReportTre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAggiornaTestReportTre.resx">
+      <DependentUpon>frmAggiornaTestReportTre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportBBGNoParam.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportBBGNoParam.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportBBG.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportBBG.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOperatori.resx">
+      <DependentUpon>frmOperatori.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistraTestReportTre.resx">
+      <DependentUpon>frmRegistraTestReportTre.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStampaPreview.resx">
+      <DependentUpon>frmStampaPreview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestReportPdfAutomatico.resx">
+      <DependentUpon>frmTestReportPdfAutomatico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gestioneLottoMateriale.resx">
+      <DependentUpon>gestioneLottoMateriale.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelerikReportBBG.resx">
+      <DependentUpon>TelerikReportBBG.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbGestioneTestReportDataSetDue.xsc">
+      <DependentUpon>dbGestioneTestReportDataSetDue.xsd</DependentUpon>
+    </None>
+    <None Include="dbGestioneTestReportDataSetDue.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbGestioneTestReportDataSetDue.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dbGestioneTestReportDataSetDue.xss">
+      <DependentUpon>dbGestioneTestReportDataSetDue.xsd</DependentUpon>
+    </None>
+    <None Include="dbGestTestReportDataSet.xsc">
+      <DependentUpon>dbGestTestReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbGestTestReportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbGestTestReportDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbGestTestReportDataSet.xss">
+      <DependentUpon>dbGestTestReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dsNumeroLottoMateriale.xsc">
+      <DependentUpon>dsNumeroLottoMateriale.xsd</DependentUpon>
+    </None>
+    <None Include="dsNumeroLottoMateriale.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsNumeroLottoMateriale.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsNumeroLottoMateriale.xss">
+      <DependentUpon>dsNumeroLottoMateriale.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\helpeditor.html" />
+    <Content Include="bin\Debug\StyleSheetHelp.css" />
+    <Content Include="Immagini\AggFornitoriMateStrume.png" />
+    <Content Include="Immagini\aggiornaLotto2.png" />
+    <Content Include="Immagini\aggiungiLotto.png" />
+    <Content Include="Immagini\aggNuovaQuotatura.png" />
+    <Content Include="Immagini\aggQuotaturPezzo.png" />
+    <Content Include="Immagini\aggtestReportBtn.JPG" />
+    <Content Include="Immagini\Archivio.ico" />
+    <Content Include="Immagini\bg.png" />
+    <Content Include="Immagini\buttonDelete.png" />
+    <Content Include="Immagini\cancellaLotto.png" />
+    <Content Include="Immagini\CancellaLotto2.png" />
+    <Content Include="Immagini\Cerca.ico" />
+    <Content Include="Immagini\ChiudiFormLotto2.png" />
+    <Content Include="Immagini\ElininaTestReportBtn.JPG" />
+    <Content Include="Immagini\exit %281%29.png" />
+    <Content Include="Immagini\exit %282%29.png" />
+    <Content Include="Immagini\exit %283%29.png" />
+    <Content Include="Immagini\exit.png" />
+    <Content Include="Immagini\firmaEdoardoBuona.png" />
+    <Content Include="Immagini\firmaEnricoBuona.png" />
+    <Content Include="Immagini\firmaFontaBuona.png" />
+    <Content Include="Immagini\firmaGalloBuona.png" />
+    <Content Include="Immagini\firmaLoreBuona.png" />
+    <Content Include="Immagini\firmaManuBuona.png" />
+    <Content Include="Immagini\firmaSimoneBuona.png" />
+    <Content Include="Immagini\imgFormGestioneLotto.png" />
+    <Content Include="Immagini\kdeprint_testprinter %281%29.ico" />
+    <Content Include="Immagini\kdeprint_testprinter %281%29.png" />
+    <Content Include="Immagini\kdeprint_testprinter.ico" />
+    <Content Include="Immagini\kdeprint_testprinter.png" />
+    <Content Include="Immagini\Lotto_add.png" />
+    <Content Include="Immagini\Lurker.ico" />
+    <Content Include="Immagini\mainForm.JPG" />
+    <Content Include="Immagini\menoBluFine.png" />
+    <Content Include="Immagini\menoRossoFine.png" />
+    <Content Include="Immagini\modificaLotto.png" />
+    <Content Include="Immagini\ModificatestReportBtn.JPG" />
+    <Content Include="Immagini\my_reports.png" />
+    <Content Include="Immagini\noFirma.gif" />
+    <Content Include="Immagini\piuBluFine.png" />
+    <Content Include="Immagini\piuRossoFine.png" />
+    <Content Include="Immagini\Prodotti.ico" />
+    <Content Include="Immagini\progReport.gif" />
+    <Content Include="Immagini\Pulsanti_Aggiorna.png" />
+    <Content Include="Immagini\Pulsanti_Annulla.png" />
+    <Content Include="Immagini\Pulsanti_Cancella.png" />
+    <Content Include="Immagini\Pulsanti_Cerca.png" />
+    <Content Include="Immagini\Pulsanti_Conferma.png" />
+    <Content Include="Immagini\Pulsanti_Database.png" />
+    <Content Include="Immagini\Pulsanti_Filtra.png" />
+    <Content Include="Immagini\Pulsanti_InserisciRiga.png" />
+    <Content Include="Immagini\Pulsanti_Modifica.png" />
+    <Content Include="Immagini\Pulsanti_Nuovo.png" />
+    <Content Include="Immagini\Pulsanti_Precedente.png" />
+    <Content Include="Immagini\Pulsanti_Primo.png" />
+    <Content Include="Immagini\Pulsanti_Riga_Aggiungi.png" />
+    <Content Include="Immagini\Pulsanti_Riga_Cancella.png" />
+    <Content Include="Immagini\Pulsanti_Riga_Modifica.png" />
+    <Content Include="Immagini\Pulsanti_Sblocca.png" />
+    <Content Include="Immagini\Pulsanti_Stampa.png" />
+    <Content Include="Immagini\Pulsanti_Successivo.png" />
+    <Content Include="Immagini\Pulsanti_Svuota.png" />
+    <Content Include="Immagini\Pulsanti_Svuota2.png" />
+    <Content Include="Immagini\Pulsanti_Ultimo.png" />
+    <Content Include="Immagini\Pulsanti_Uscita.png" />
+    <Content Include="Immagini\RegistraLotto.png" />
+    <Content Include="Immagini\RegLottoTestReportBtn.JPG" />
+    <Content Include="Immagini\reports.png" />
+    <Content Include="Immagini\report_add.png" />
+    <Content Include="Immagini\report_delete.png" />
+    <Content Include="Immagini\report_disk %281%29.png" />
+    <Content Include="Immagini\report_disk.png" />
+    <Content Include="Immagini\report_edit %281%29.png" />
+    <Content Include="Immagini\report_edit.png" />
+    <Content Include="Immagini\report_go.png" />
+    <Content Include="Immagini\report_key.png" />
+    <Content Include="Immagini\report_link.png" />
+    <Content Include="Immagini\report_magnify.png" />
+    <Content Include="Immagini\report_picture.png" />
+    <Content Include="Immagini\report_user.png" />
+    <Content Include="Immagini\report_word.png" />
+    <Content Include="Immagini\SalvaDaEsistenteTestReportBtn.JPG" />
+    <Content Include="Immagini\salvaNumeroLotto.png" />
+    <Content Include="Immagini\sfondo1134.jpg" />
+    <Content Include="Immagini\sfondo1155.jpg" />
+    <Content Include="Immagini\sfondo900.jpg" />
+    <Content Include="Immagini\sfondoTabella.jpg" />
+    <Content Include="Immagini\sfondoTabella10034.jpg" />
+    <Content Include="Immagini\spellcheck.ico" />
+    <Content Include="Immagini\spellcheck.png" />
+    <Content Include="Immagini\Stampante.ico" />
+    <Content Include="Immagini\StampaTestReportBtn.JPG" />
+    <EmbeddedResource Include="Resources\BusinessGrid.xml" />
+    <EmbeddedResource Include="Resources\BusinessGridScrollBar.xml" />
+    <EmbeddedResource Include="Resources\RadComboBoxLightBlue.xml" />
+    <EmbeddedResource Include="Resources\RadLabelTheme.xml" />
+    <EmbeddedResource Include="Resources\RadTextBoxLightBlue.xml" />
+    <EmbeddedResource Include="Resources\TitleBarBusinessGrid.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.ReportViewer.11.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Report Viewer 2012 Runtime</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.11.0.x86">
+      <Visible>False</Visible>
+      <ProductName>Microsoft® System CLR Types per SQL Server® 2012 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
+      <Visible>False</Visible>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ClientDoc">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommLayer">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonControls">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.Controllers">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CubeDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.DataDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.DataSetConversion">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ObjectFactory">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.Prompting">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ReportDefModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.XmlSerialize">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="FlashControlV71">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="ShockwaveFlashObjects">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
