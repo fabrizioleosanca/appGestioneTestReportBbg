@@ -29,6 +29,7 @@ Public Class frmOperatori
         Using datareader As IDataReader = _db.ExecuteReader(cmdOperatori)
             While datareader.Read
                 cmbSelezionaOperatore.Items.Add(datareader("Operatore"))
+                cmbCancellaOperatore.Items.Add(datareader("Operatore"))
             End While
         End Using
     End Sub
@@ -53,6 +54,8 @@ Public Class frmOperatori
     End Function
 
     Private Sub btnApriFileFirma_Click(sender As Object, e As EventArgs) Handles btnApriFileFirma.Click
+
+
         Dim noPhoto As String
 
         Dim pathFirma As String = Application.StartupPath
@@ -65,13 +68,13 @@ Public Class frmOperatori
             OpenFileDialog1.InitialDirectory = pathSelezionaImmagine
             OpenFileDialog1.Filter = "File Immagine(*.PNG;*.JPG;*.GIF)|*.PNG;*.JPG;*.GIF|Tutti i Files (*.*)|*.*"
 
-            PathImmagineFirma = OpenFileDialog1.FileName.ToString
 
             ' Carica l'immagine selezionata nel controllo PictureBox
             If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
-                PictureBox1.Image = Image.FromFile(PathImmagineFirma)
+                PathImmagineFirma = OpenFileDialog1.FileName.ToString
+                PictureBox1.BackgroundImage = Image.FromFile(PathImmagineFirma)
             Else
-                PictureBox1.Image = Image.FromFile(pathNoPhoto)
+                PictureBox1.BackgroundImage = Image.FromFile(pathNoPhoto)
             End If
 
         Catch ex As Exception
@@ -85,11 +88,8 @@ Public Class frmOperatori
     Public Function inserisciNuovoOperatore(ID As Integer, NuovoOperatore As String) As Integer
 
         Dim insertCommand As DbCommand = Nothing
-
         Dim curFileNameNuovoOperatore As String
         Dim fsNuovoOpe As FileStream
-
-        Dim rowsAffected As Integer
         Dim newFileNameImageFirma As String
 
         'Immagine firma operatore nuova
@@ -103,9 +103,9 @@ Public Class frmOperatori
 
 
         Dim strQuery As String = "INSERT INTO tblOperatore " &
-                     "(ID,Operatore ,imgFirmaOperatore ) " &
+                     "(ID,Operatore ,Firme ) " &
                      " VALUES " &
-                     "(@ID, @Operatore ,@imgFirmaOperatore)"
+                     "(@ID, @Operatore ,@Firme)"
 
         Try
 
@@ -113,15 +113,17 @@ Public Class frmOperatori
 
             _db.AddInParameter(insertCommand, "ID", DbType.Int32, ID)
             _db.AddInParameter(insertCommand, "Operatore", DbType.String, NuovoOperatore)
-            _db.AddInParameter(insertCommand, "imgFirmaOperatore", DbType.Binary, propImageAsBytes)
+            _db.AddInParameter(insertCommand, "Firme", DbType.Binary, propImageAsBytes)
 
-            rowsAffected = _db.ExecuteNonQuery(insertCommand)
+            Dim rowsAffected As Integer? = _db.ExecuteNonQuery(insertCommand)
+
+            If Not rowsAffected Is Nothing Then
+                Return rowsAffected
+            End If
 
         Catch ex As Exception
             MessageBox.Show("Errore insertOperatore : " & ex.Message)
         End Try
-
-        Return rowsAffected
 
 
     End Function
@@ -130,15 +132,42 @@ Public Class frmOperatori
 
         Dim CognomeNuovoOperatore As String = txtNewCognomeOperatore.Text
         Dim NomeNuovoOperatore As String = txtNewNomeOperatore.Text
-
         Dim CognomeNomeNuovo As String = CognomeNuovoOperatore & " " & NomeNuovoOperatore
-
         Dim ID As Integer = contatore()
 
+
+        Try
+            Dim retVal As Integer? = inserisciNuovoOperatore(ID, CognomeNomeNuovo)
+
+            If retVal = 1 Then
+
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Errore insertOperatore : " & ex.Message)
+        End Try
 
 
 
     End Sub
+
+    'Private Sub validateUserEntry()
+    '    ' Checks the value of the text.
+    '    ' Initializes the variables to pass to the MessageBox.Show method.
+    '    Dim message As String = "You did not enter a server name. Cancel this operation?"
+    '        Dim caption As String = "Error Detected in Input"
+    '        Dim buttons As MessageBoxButtons = MessageBoxButtons.YesNo
+    '        Dim result As DialogResult
+
+    '        ' Displays the MessageBox.
+    '        result = MessageBox.Show(message, caption, buttons)
+    '        If result = System.Windows.Forms.DialogResult.Yes Then
+    '            ' Closes the parent form.
+    '            Me.Close()
+    '        End If
+
+    'End Sub
 
 
     Public Function contatoreNoAddUno() As Integer
@@ -193,122 +222,10 @@ Public Class frmOperatori
     End Function
 
 
-
-    Public Function insertOperatore(ID As Integer, Operatore As String) As Integer
-
-        Dim insertCommand As DbCommand = Nothing
-
-        Dim rowsAffected As Integer
-
-        Dim curFileNameEnricoPath As String
-        Dim curFileNameEdoPath As String
-        Dim curFileNameManuPath As String
-        Dim curFileNameGalloPath As String
-        Dim curFileNameFontaPath As String
-        Dim curFileNoFirma As String
-
-        Dim fsEnrico As FileStream
-        Dim fsEdo As FileStream
-        Dim fsManu As FileStream
-        Dim fsGallo As FileStream
-        Dim fsFonta As FileStream
-        Dim fsNoFirma As FileStream
-
-        'Dim imageAsBytes As Byte()
-
-        If Operatore = "Grigioni Enrico" Then
-            Dim pathFirmaEnricoApp As String = Application.StartupPath
-            Dim pathFirmaEnrico As String = pathFirmaEnricoApp.Replace("\bin\Debug", "\Immagini\firmaEnricoBuona.png")
-            curFileNameEnricoPath = pathFirmaEnrico
-            fsEnrico = New FileStream(curFileNameEnricoPath, FileMode.Open)
-            propImageAsBytes = New Byte(fsEnrico.Length - 1) {}
-            fsEnrico.Read(propImageAsBytes, 0, propImageAsBytes.Length)
-            fsEnrico.Close()
-        End If
-
-
-        If Operatore = "Grigioni Edoardo" Then
-            Dim pathFirmaEdoApp As String = Application.StartupPath
-            Dim pathFirmaEdo As String = pathFirmaEdoApp.Replace("\bin\Debug", "\Immagini\firmaEdoardoBuona.png")
-            curFileNameEdoPath = pathFirmaEdo
-            fsEdo = New System.IO.FileStream(curFileNameEdoPath, FileMode.Open)
-            propImageAsBytes = New Byte(fsEdo.Length - 1) {}
-            fsEdo.Read(propImageAsBytes, 0, propImageAsBytes.Length)
-            fsEdo.Close()
-        End If
-
-
-        If Operatore = "Bini Emanuele" Then
-            Dim pathFirmaManuApp As String = Application.StartupPath
-            Dim pathFirmaManu As String = pathFirmaManuApp.Replace("\bin\Debug", "\Immagini\firmaManuBuona.png")
-            curFileNameManuPath = pathFirmaManu
-            fsManu = New System.IO.FileStream(curFileNameManuPath, FileMode.Open)
-            propImageAsBytes = New Byte(fsManu.Length - 1) {}
-            fsManu.Read(propImageAsBytes, 0, propImageAsBytes.Length)
-            fsManu.Close()
-        End If
-
-        If Operatore = "Galletti Adriano" Then
-            Dim pathFirmaAdrianoApp As String = Application.StartupPath
-            Dim pathFirmaAdriano As String = pathFirmaAdrianoApp.Replace("\bin\Debug", "\Immagini\firmaGalloBuona.png")
-            curFileNameGalloPath = pathFirmaAdriano
-            fsGallo = New System.IO.FileStream(curFileNameGalloPath, FileMode.Open)
-            propImageAsBytes = New Byte(fsGallo.Length - 1) {}
-            fsGallo.Read(propImageAsBytes, 0, propImageAsBytes.Length)
-            fsGallo.Close()
-        End If
-
-        If Operatore = "Fontanelli Francesco" Then
-            Dim pathFirmaFrancescoApp As String = Application.StartupPath
-            Dim pathFirmaFrancesco As String = pathFirmaFrancescoApp.Replace("\bin\Debug", "\Immagini\firmaFontaBuona.png")
-            curFileNameFontaPath = pathFirmaFrancesco
-            fsFonta = New System.IO.FileStream(curFileNameFontaPath, FileMode.Open)
-            propImageAsBytes = New Byte(fsFonta.Length - 1) {}
-            fsFonta.Read(propImageAsBytes, 0, propImageAsBytes.Length)
-            fsFonta.Close()
-        End If
-
-        If Operatore = String.Empty Then
-            Dim pathFirmaNoUserApp As String = Application.StartupPath
-            Dim pathFirmaNoUser As String = pathFirmaNoUserApp.Replace("\bin\Debug", "\Immagini\noFirma.gif")
-            curFileNoFirma = pathFirmaNoUser
-            fsNoFirma = New System.IO.FileStream(curFileNoFirma, FileMode.Open)
-            propImageAsBytes = New Byte(fsNoFirma.Length - 1) {}
-            fsNoFirma.Read(propImageAsBytes, 0, propImageAsBytes.Length)
-            fsNoFirma.Close()
-        End If
-
-        Dim strQuery As String = "INSERT INTO tblOperatore " &
-                      "(ID,Operatore ,imgFirmaOperatore ) " &
-                      " VALUES " &
-                      "(@ID, @Operatore ,@imgFirmaOperatore)"
-
-
-        Try
-
-            insertCommand = _db.GetSqlStringCommand(strQuery)
-
-            _db.AddInParameter(insertCommand, "ID", DbType.Int32, ID)
-            _db.AddInParameter(insertCommand, "Operatore", DbType.String, Operatore)
-            _db.AddInParameter(insertCommand, "imgFirmaOperatore", DbType.Binary, propImageAsBytes)
-
-            rowsAffected = _db.ExecuteNonQuery(insertCommand)
-
-        Catch ex As Exception
-            MessageBox.Show("Errore insertOperatore : " & ex.Message)
-        End Try
-
-        Return rowsAffected
-
-    End Function
-
-
     Public Function Convert(value As Date) As Date
         Dim DateValue As Date = value
         Return DateValue.ToShortDateString
     End Function
-
-
 
 
     Private Sub cmdChiudi_Click(sender As Object, e As EventArgs) Handles cmdChiudi.Click

@@ -3068,7 +3068,7 @@ NoteQuartoPezzo As String) As Integer
         Dim IDIntestazione As Integer = intContatoreQuintoPezzo
 
         Try
-            Dim retQuintoPezzoSoloID As Nullable(Of Integer) = InsertPezziQuintoPezzoSoloID(IDPezziQuintoPezzo, IDIntestazione)
+            Dim retQuintoPezzoSoloID As Integer? = InsertPezziQuintoPezzoSoloID(IDPezziQuintoPezzo, IDIntestazione)
 
             If Not retQuintoPezzoSoloID Is Nothing Then
                 Return retQuintoPezzoSoloID
