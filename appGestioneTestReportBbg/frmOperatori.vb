@@ -140,6 +140,32 @@ Public Class frmOperatori
 
     End Sub
 
+
+    Public Function contatoreNoAddUno() As Integer
+        Dim i As Integer?
+
+        Try
+            Dim strSQL As String = "SELECT MAX(ID) AS IDOperatore FROM tblOperatore"
+            Dim cmd As DbCommand = _db.GetSqlStringCommand(strSQL)
+
+            Using datareader As IDataReader = _db.ExecuteReader(cmd)
+                While datareader.Read
+                    If IsDBNull(datareader("IDOperatore")) Then
+                        i = 1
+                    Else
+                        i = datareader("IDOperatore")
+                    End If
+                End While
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Errore : " & ex.Message)
+        End Try
+
+        Return i
+
+    End Function
+
     Public Function contatore() As Integer
         Dim i As Integer?
 
