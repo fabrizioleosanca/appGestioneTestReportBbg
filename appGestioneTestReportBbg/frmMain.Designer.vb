@@ -24,14 +24,15 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim GridViewTextBoxColumn17 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn18 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn19 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn20 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn21 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn22 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn23 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn24 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn1 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn2 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn3 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn4 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn5 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn6 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn7 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn8 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim TableViewDefinition1 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Me.Windows7Theme1 = New Telerik.WinControls.Themes.Windows7Theme()
         Me.RadCommandBarMain = New Telerik.WinControls.UI.RadCommandBar()
         Me.CommandBarRowElement1 = New Telerik.WinControls.UI.CommandBarRowElement()
@@ -60,6 +61,8 @@ Partial Class frmMain
         Me.lblNomeDitta = New System.Windows.Forms.Label()
         Me.lblMod = New System.Windows.Forms.Label()
         Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
+        Me.CommandBarSeparator6 = New Telerik.WinControls.UI.CommandBarSeparator()
+        Me.CommandBarSeparator5 = New Telerik.WinControls.UI.CommandBarSeparator()
         CType(Me.RadCommandBarMain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadStatusStrip1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridTestReport, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,24 +78,23 @@ Partial Class frmMain
         Me.RadCommandBarMain.Location = New System.Drawing.Point(0, 71)
         Me.RadCommandBarMain.Name = "RadCommandBarMain"
         Me.RadCommandBarMain.Rows.AddRange(New Telerik.WinControls.UI.CommandBarRowElement() {Me.CommandBarRowElement1})
-        Me.RadCommandBarMain.Size = New System.Drawing.Size(1194, 81)
+        Me.RadCommandBarMain.Size = New System.Drawing.Size(1194, 56)
         Me.RadCommandBarMain.TabIndex = 0
         '
         'CommandBarRowElement1
         '
         Me.CommandBarRowElement1.MinSize = New System.Drawing.Size(25, 25)
+        Me.CommandBarRowElement1.Name = "CommandBarRowElement1"
         Me.CommandBarRowElement1.Strips.AddRange(New Telerik.WinControls.UI.CommandBarStripElement() {Me.CommandBarStripElement1})
         '
         'CommandBarStripElement1
         '
         Me.CommandBarStripElement1.DisplayName = "CommandBarStripElement1"
-        Me.CommandBarStripElement1.Items.AddRange(New Telerik.WinControls.UI.RadCommandBarBaseItem() {Me.btnAggiungiTestReport, Me.btnModifcaTestReport, Me.btnEliminaTestReport, Me.CommandBarSeparator1, Me.btnStampaDirettaMain, Me.CommandBarSeparator3, Me.btnOpenSalvaNuovoDaEsistente, Me.CommandBarSeparator2, Me.btnRegistraLotto, Me.btnAggiorna, Me.btnAggiungiFornitoriStrumMate, Me.btnOperatori, Me.CommandBarSeparator4, Me.btnEsci})
+        Me.CommandBarStripElement1.Items.AddRange(New Telerik.WinControls.UI.RadCommandBarBaseItem() {Me.btnAggiungiTestReport, Me.btnModifcaTestReport, Me.btnEliminaTestReport, Me.CommandBarSeparator1, Me.btnStampaDirettaMain, Me.CommandBarSeparator3, Me.btnOpenSalvaNuovoDaEsistente, Me.CommandBarSeparator2, Me.btnRegistraLotto, Me.btnAggiorna, Me.btnAggiungiFornitoriStrumMate, Me.CommandBarSeparator6, Me.btnOperatori, Me.CommandBarSeparator4, Me.btnEsci, Me.CommandBarSeparator5})
         Me.CommandBarStripElement1.Name = "CommandBarStripElement1"
         '
         'btnAggiungiTestReport
         '
-        Me.btnAggiungiTestReport.AccessibleDescription = "Aggiungi Test Report"
-        Me.btnAggiungiTestReport.AccessibleName = "Aggiungi Test Report"
         Me.btnAggiungiTestReport.DisplayName = "btnAggiungiTestReport"
         Me.btnAggiungiTestReport.DrawText = True
         Me.btnAggiungiTestReport.Image = CType(resources.GetObject("btnAggiungiTestReport.Image"), System.Drawing.Image)
@@ -101,31 +103,24 @@ Partial Class frmMain
         Me.btnAggiungiTestReport.Text = "Aggiungi Test Report"
         Me.btnAggiungiTestReport.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAggiungiTestReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnAggiungiTestReport.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'btnModifcaTestReport
         '
-        Me.btnModifcaTestReport.AccessibleDescription = "Modifica Test Report"
-        Me.btnModifcaTestReport.AccessibleName = "Modifica Test Report"
         Me.btnModifcaTestReport.DisplayName = "btnModifcaTestReport"
         Me.btnModifcaTestReport.DrawText = True
         Me.btnModifcaTestReport.Image = CType(resources.GetObject("btnModifcaTestReport.Image"), System.Drawing.Image)
         Me.btnModifcaTestReport.Name = "btnModifcaTestReport"
         Me.btnModifcaTestReport.Text = "Modifica Test Report"
         Me.btnModifcaTestReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnModifcaTestReport.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'btnEliminaTestReport
         '
-        Me.btnEliminaTestReport.AccessibleDescription = "Elimina Test Report"
-        Me.btnEliminaTestReport.AccessibleName = "Elimina Test Report"
         Me.btnEliminaTestReport.DisplayName = "btnEliminaTestReport"
         Me.btnEliminaTestReport.DrawText = True
         Me.btnEliminaTestReport.Image = CType(resources.GetObject("btnEliminaTestReport.Image"), System.Drawing.Image)
         Me.btnEliminaTestReport.Name = "btnEliminaTestReport"
         Me.btnEliminaTestReport.Text = "Elimina Test Report"
         Me.btnEliminaTestReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnEliminaTestReport.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'CommandBarSeparator1
         '
@@ -133,20 +128,16 @@ Partial Class frmMain
         Me.CommandBarSeparator1.AccessibleName = "CommandBarSeparator1"
         Me.CommandBarSeparator1.DisplayName = "CommandBarSeparator1"
         Me.CommandBarSeparator1.Name = "CommandBarSeparator1"
-        Me.CommandBarSeparator1.Visibility = Telerik.WinControls.ElementVisibility.Visible
         Me.CommandBarSeparator1.VisibleInOverflowMenu = False
         '
         'btnStampaDirettaMain
         '
-        Me.btnStampaDirettaMain.AccessibleDescription = "Stampa"
-        Me.btnStampaDirettaMain.AccessibleName = "Stampa"
         Me.btnStampaDirettaMain.DisplayName = "CommandBarButton1"
         Me.btnStampaDirettaMain.DrawText = True
         Me.btnStampaDirettaMain.Image = CType(resources.GetObject("btnStampaDirettaMain.Image"), System.Drawing.Image)
         Me.btnStampaDirettaMain.Name = "btnStampaDirettaMain"
         Me.btnStampaDirettaMain.Text = "Stampa"
         Me.btnStampaDirettaMain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnStampaDirettaMain.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'CommandBarSeparator3
         '
@@ -154,20 +145,16 @@ Partial Class frmMain
         Me.CommandBarSeparator3.AccessibleName = "CommandBarSeparator3"
         Me.CommandBarSeparator3.DisplayName = "CommandBarSeparator3"
         Me.CommandBarSeparator3.Name = "CommandBarSeparator3"
-        Me.CommandBarSeparator3.Visibility = Telerik.WinControls.ElementVisibility.Visible
         Me.CommandBarSeparator3.VisibleInOverflowMenu = False
         '
         'btnOpenSalvaNuovoDaEsistente
         '
-        Me.btnOpenSalvaNuovoDaEsistente.AccessibleDescription = "Salva Da Esistente"
-        Me.btnOpenSalvaNuovoDaEsistente.AccessibleName = "Salva Da Esistente"
         Me.btnOpenSalvaNuovoDaEsistente.DisplayName = "CommandBarButton1"
         Me.btnOpenSalvaNuovoDaEsistente.DrawText = True
         Me.btnOpenSalvaNuovoDaEsistente.Image = CType(resources.GetObject("btnOpenSalvaNuovoDaEsistente.Image"), System.Drawing.Image)
         Me.btnOpenSalvaNuovoDaEsistente.Name = "btnOpenSalvaNuovoDaEsistente"
         Me.btnOpenSalvaNuovoDaEsistente.Text = "Salva Da Esistente"
         Me.btnOpenSalvaNuovoDaEsistente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnOpenSalvaNuovoDaEsistente.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'CommandBarSeparator2
         '
@@ -175,20 +162,16 @@ Partial Class frmMain
         Me.CommandBarSeparator2.AccessibleName = "CommandBarSeparator2"
         Me.CommandBarSeparator2.DisplayName = "CommandBarSeparator2"
         Me.CommandBarSeparator2.Name = "CommandBarSeparator2"
-        Me.CommandBarSeparator2.Visibility = Telerik.WinControls.ElementVisibility.Visible
         Me.CommandBarSeparator2.VisibleInOverflowMenu = False
         '
         'btnRegistraLotto
         '
-        Me.btnRegistraLotto.AccessibleDescription = "Reg. Lotto"
-        Me.btnRegistraLotto.AccessibleName = "Reg. Lotto"
         Me.btnRegistraLotto.DisplayName = "CommandBarButton1"
         Me.btnRegistraLotto.DrawText = True
         Me.btnRegistraLotto.Image = CType(resources.GetObject("btnRegistraLotto.Image"), System.Drawing.Image)
         Me.btnRegistraLotto.Name = "btnRegistraLotto"
         Me.btnRegistraLotto.Text = "Reg. Lotto"
         Me.btnRegistraLotto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnRegistraLotto.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'btnAggiorna
         '
@@ -200,7 +183,6 @@ Partial Class frmMain
         Me.btnAggiorna.Name = "btnAggiorna"
         Me.btnAggiorna.Text = "Aggiorna"
         Me.btnAggiorna.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnAggiorna.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'btnAggiungiFornitoriStrumMate
         '
@@ -212,19 +194,15 @@ Partial Class frmMain
         Me.btnAggiungiFornitoriStrumMate.Name = "btnAggiungiFornitoriStrumMate"
         Me.btnAggiungiFornitoriStrumMate.Text = "Gest For-Stru-Mat"
         Me.btnAggiungiFornitoriStrumMate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnAggiungiFornitoriStrumMate.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'btnOperatori
         '
-        Me.btnOperatori.AccessibleDescription = "Operatori"
-        Me.btnOperatori.AccessibleName = "Operatori"
         Me.btnOperatori.DisplayName = "CommandBarButton1"
         Me.btnOperatori.DrawText = True
         Me.btnOperatori.Image = CType(resources.GetObject("btnOperatori.Image"), System.Drawing.Image)
         Me.btnOperatori.Name = "btnOperatori"
         Me.btnOperatori.Text = "Operatori"
         Me.btnOperatori.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnOperatori.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'CommandBarSeparator4
         '
@@ -232,7 +210,6 @@ Partial Class frmMain
         Me.CommandBarSeparator4.AccessibleName = "CommandBarSeparator4"
         Me.CommandBarSeparator4.DisplayName = "CommandBarSeparator4"
         Me.CommandBarSeparator4.Name = "CommandBarSeparator4"
-        Me.CommandBarSeparator4.Visibility = Telerik.WinControls.ElementVisibility.Visible
         Me.CommandBarSeparator4.VisibleInOverflowMenu = False
         '
         'btnEsci
@@ -245,69 +222,67 @@ Partial Class frmMain
         Me.btnEsci.Name = "btnEsci"
         Me.btnEsci.Text = "Esci"
         Me.btnEsci.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnEsci.Visibility = Telerik.WinControls.ElementVisibility.Visible
         '
         'RadStatusStrip1
         '
-        Me.RadStatusStrip1.Location = New System.Drawing.Point(0, 658)
+        Me.RadStatusStrip1.Location = New System.Drawing.Point(0, 656)
         Me.RadStatusStrip1.Name = "RadStatusStrip1"
-        Me.RadStatusStrip1.Size = New System.Drawing.Size(1194, 24)
+        Me.RadStatusStrip1.Size = New System.Drawing.Size(1194, 26)
         Me.RadStatusStrip1.TabIndex = 1
-        Me.RadStatusStrip1.Text = "RadStatusStripMain"
         '
         'gridTestReport
         '
         Me.gridTestReport.Location = New System.Drawing.Point(0, 125)
         '
-        'gridTestReport
+        '
         '
         Me.gridTestReport.MasterTemplate.AllowAddNewRow = False
         Me.gridTestReport.MasterTemplate.AllowDeleteRow = False
         Me.gridTestReport.MasterTemplate.AllowEditRow = False
         Me.gridTestReport.MasterTemplate.AutoGenerateColumns = False
-        GridViewTextBoxColumn17.DataType = GetType(Integer)
-        GridViewTextBoxColumn17.FieldName = "IDIntestazione"
-        GridViewTextBoxColumn17.HeaderText = "ID "
-        GridViewTextBoxColumn17.Name = "IDIntestazione"
-        GridViewTextBoxColumn17.Width = 60
-        GridViewTextBoxColumn18.FieldName = "NumOrdine"
-        GridViewTextBoxColumn18.HeaderText = "Numero Ordine"
-        GridViewTextBoxColumn18.Name = "NumOrdine"
-        GridViewTextBoxColumn18.Width = 170
-        GridViewTextBoxColumn19.FieldName = "CodArticolo"
-        GridViewTextBoxColumn19.HeaderText = "Codice Articolo"
-        GridViewTextBoxColumn19.Name = "CodArticolo"
-        GridViewTextBoxColumn19.Width = 180
-        GridViewTextBoxColumn20.DataType = GetType(Date)
-        GridViewTextBoxColumn20.FieldName = "Data"
-        GridViewTextBoxColumn20.HeaderText = "Data Test Report"
-        GridViewTextBoxColumn20.Name = "Data"
-        GridViewTextBoxColumn20.Width = 120
-        GridViewTextBoxColumn21.FieldName = "Materiale"
-        GridViewTextBoxColumn21.HeaderText = "Materiale"
-        GridViewTextBoxColumn21.Name = "Materiale"
-        GridViewTextBoxColumn21.Width = 200
-        GridViewTextBoxColumn22.FieldName = "Strumento"
-        GridViewTextBoxColumn22.HeaderText = "Strumento"
-        GridViewTextBoxColumn22.Name = "Strumento"
-        GridViewTextBoxColumn22.Width = 150
-        GridViewTextBoxColumn23.FieldName = "MacchinaNum"
-        GridViewTextBoxColumn23.HeaderText = "Numero Macchina"
-        GridViewTextBoxColumn23.Name = "MacchinaNum"
-        GridViewTextBoxColumn23.Width = 150
-        GridViewTextBoxColumn24.DataType = GetType(Short)
-        GridViewTextBoxColumn24.FieldName = "RigaOrdNum"
-        GridViewTextBoxColumn24.HeaderText = "Numero Riga Ord."
-        GridViewTextBoxColumn24.Name = "RigaOrdNum"
-        GridViewTextBoxColumn24.Width = 130
-        Me.gridTestReport.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn17, GridViewTextBoxColumn18, GridViewTextBoxColumn19, GridViewTextBoxColumn20, GridViewTextBoxColumn21, GridViewTextBoxColumn22, GridViewTextBoxColumn23, GridViewTextBoxColumn24})
+        GridViewTextBoxColumn1.DataType = GetType(Integer)
+        GridViewTextBoxColumn1.FieldName = "IDIntestazione"
+        GridViewTextBoxColumn1.HeaderText = "ID "
+        GridViewTextBoxColumn1.Name = "IDIntestazione"
+        GridViewTextBoxColumn1.Width = 60
+        GridViewTextBoxColumn2.FieldName = "NumOrdine"
+        GridViewTextBoxColumn2.HeaderText = "Numero Ordine"
+        GridViewTextBoxColumn2.Name = "NumOrdine"
+        GridViewTextBoxColumn2.Width = 170
+        GridViewTextBoxColumn3.FieldName = "CodArticolo"
+        GridViewTextBoxColumn3.HeaderText = "Codice Articolo"
+        GridViewTextBoxColumn3.Name = "CodArticolo"
+        GridViewTextBoxColumn3.Width = 180
+        GridViewTextBoxColumn4.DataType = GetType(Date)
+        GridViewTextBoxColumn4.FieldName = "Data"
+        GridViewTextBoxColumn4.HeaderText = "Data Test Report"
+        GridViewTextBoxColumn4.Name = "Data"
+        GridViewTextBoxColumn4.Width = 120
+        GridViewTextBoxColumn5.FieldName = "Materiale"
+        GridViewTextBoxColumn5.HeaderText = "Materiale"
+        GridViewTextBoxColumn5.Name = "Materiale"
+        GridViewTextBoxColumn5.Width = 200
+        GridViewTextBoxColumn6.FieldName = "Strumento"
+        GridViewTextBoxColumn6.HeaderText = "Strumento"
+        GridViewTextBoxColumn6.Name = "Strumento"
+        GridViewTextBoxColumn6.Width = 150
+        GridViewTextBoxColumn7.FieldName = "MacchinaNum"
+        GridViewTextBoxColumn7.HeaderText = "Numero Macchina"
+        GridViewTextBoxColumn7.Name = "MacchinaNum"
+        GridViewTextBoxColumn7.Width = 150
+        GridViewTextBoxColumn8.DataType = GetType(Short)
+        GridViewTextBoxColumn8.FieldName = "RigaOrdNum"
+        GridViewTextBoxColumn8.HeaderText = "Numero Riga Ord."
+        GridViewTextBoxColumn8.Name = "RigaOrdNum"
+        GridViewTextBoxColumn8.Width = 130
+        Me.gridTestReport.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4, GridViewTextBoxColumn5, GridViewTextBoxColumn6, GridViewTextBoxColumn7, GridViewTextBoxColumn8})
         Me.gridTestReport.MasterTemplate.DataSource = Me.DbGestTestReportDataSetBindingSource
         Me.gridTestReport.MasterTemplate.EnableFiltering = True
         Me.gridTestReport.MasterTemplate.VerticalScrollState = Telerik.WinControls.UI.ScrollState.AlwaysShow
+        Me.gridTestReport.MasterTemplate.ViewDefinition = TableViewDefinition1
         Me.gridTestReport.Name = "gridTestReport"
         Me.gridTestReport.Size = New System.Drawing.Size(1194, 534)
         Me.gridTestReport.TabIndex = 2
-        Me.gridTestReport.Text = "RadGridViewTestReport"
         Me.gridTestReport.UseScrollbarsInHierarchy = True
         '
         'DbGestTestReportDataSetBindingSource
@@ -377,6 +352,20 @@ Partial Class frmMain
         '
         Me.HelpProvider1.HelpNamespace = "helpeditor.html"
         '
+        'CommandBarSeparator6
+        '
+        Me.CommandBarSeparator6.DisplayName = "CommandBarSeparator6"
+        Me.CommandBarSeparator6.Name = "CommandBarSeparator6"
+        Me.CommandBarSeparator6.Text = ""
+        Me.CommandBarSeparator6.VisibleInOverflowMenu = False
+        '
+        'CommandBarSeparator5
+        '
+        Me.CommandBarSeparator5.DisplayName = "CommandBarSeparator5"
+        Me.CommandBarSeparator5.Name = "CommandBarSeparator5"
+        Me.CommandBarSeparator5.Text = ""
+        Me.CommandBarSeparator5.VisibleInOverflowMenu = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -434,4 +423,6 @@ Partial Class frmMain
     Friend WithEvents CommandBarSeparator3 As Telerik.WinControls.UI.CommandBarSeparator
     Friend WithEvents CommandBarSeparator4 As Telerik.WinControls.UI.CommandBarSeparator
     Friend WithEvents btnOperatori As Telerik.WinControls.UI.CommandBarButton
+    Friend WithEvents CommandBarSeparator6 As Telerik.WinControls.UI.CommandBarSeparator
+    Friend WithEvents CommandBarSeparator5 As Telerik.WinControls.UI.CommandBarSeparator
 End Class

@@ -28,6 +28,8 @@ Public Class frmOperatori
         cmdOperatori = _db.GetStoredProcCommand(strSQLGetOperatori)
         Using datareader As IDataReader = _db.ExecuteReader(cmdOperatori)
             While datareader.Read
+                cmbSelezionaOperatore.Items.Clear()
+                cmbCancellaOperatore.Items.Clear()
                 cmbSelezionaOperatore.Items.Add(datareader("Operatore"))
                 cmbCancellaOperatore.Items.Add(datareader("Operatore"))
             End While
@@ -55,51 +57,49 @@ Public Class frmOperatori
 
     Private Sub btnApriFileFirma_Click(sender As Object, e As EventArgs) Handles btnApriFileFirma.Click
 
-
         Dim noPhoto As String
 
         Dim pathFirma As String = Application.StartupPath
         Dim pathSelezionaImmagine As String = pathFirma.Replace("\bin\Debug", "\Immagini")
         Dim pathNoPhoto As String = pathFirma.Replace("\bin\Debug", "\Immagini\NoImmagineFirma.png")
 
+        OpenFileDialog1.Title = "Seleziona La Nuova Immagine Della Firma Del Nuovo Operatore"
+        OpenFileDialog1.InitialDirectory = pathSelezionaImmagine
+        OpenFileDialog1.Filter = "File Immagine(*.PNG;*.JPG;*.GIF)|*.PNG;*.JPG;*.GIF|Tutti i Files (*.*)|*.*"
+
         Try
-
-            OpenFileDialog1.Title = "Seleziona La Nuova Immagine Della Firma Del Nuovo Operatore"
-            OpenFileDialog1.InitialDirectory = pathSelezionaImmagine
-            OpenFileDialog1.Filter = "File Immagine(*.PNG;*.JPG;*.GIF)|*.PNG;*.JPG;*.GIF|Tutti i Files (*.*)|*.*"
-
 
             ' Carica l'immagine selezionata nel controllo PictureBox
             If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
                 PathImmagineFirma = OpenFileDialog1.FileName.ToString
                 PictureBox1.BackgroundImage = Image.FromFile(PathImmagineFirma)
             Else
-                PictureBox1.BackgroundImage = Image.FromFile(pathNoPhoto)
+                PictureBox1.Image = Image.FromFile(pathNoPhoto)
             End If
 
         Catch ex As Exception
             MessageBox.Show("Errore frmOperatori : " & ex.Message)
         End Try
 
-
     End Sub
 
 
     Public Function inserisciNuovoOperatore(ID As Integer, NuovoOperatore As String) As Integer
 
-        Dim insertCommand As DbCommand = Nothing
         Dim curFileNameNuovoOperatore As String
-        Dim fsNuovoOpe As FileStream
         Dim newFileNameImageFirma As String
 
+        PictureBox1.Dispose()
+        PictureBox1.BackgroundImage = Nothing
+
         'Immagine firma operatore nuova
-        Dim pathFirmaNuovoApp As String = Application.StartupPath
-        Dim pathFirmaNuovo As String = pathFirmaNuovoApp.Replace("\bin\Debug", "\Immagini\" & PathImmagineFirma)
-        curFileNameNuovoOperatore = pathFirmaNuovo
-        fsNuovoOpe = New FileStream(curFileNameNuovoOperatore, FileMode.Open)
-        propImageAsBytes = New Byte(fsNuovoOpe.Length - 1) {}
-        fsNuovoOpe.Read(propImageAsBytes, 0, propImageAsBytes.Length)
-        fsNuovoOpe.Close()
+        curFileNameNuovoOperatore = PathImmagineFirma
+
+        Using fsNuovoOpe As FileStream = New FileStream(curFileNameNuovoOperatore, FileMode.Open)
+            propImageAsBytes = New Byte(fsNuovoOpe.Length - 1) {}
+            fsNuovoOpe.Read(propImageAsBytes, 0, propImageAsBytes.Length)
+            fsNuovoOpe.Close()
+        End Using
 
 
         Dim strQuery As String = "INSERT INTO tblOperatore " &
@@ -109,22 +109,23 @@ Public Class frmOperatori
 
         Try
 
-            insertCommand = _db.GetSqlStringCommand(strQuery)
+            Using insertCommand As DbCommand = _db.GetSqlStringCommand(strQuery)
 
-            _db.AddInParameter(insertCommand, "ID", DbType.Int32, ID)
-            _db.AddInParameter(insertCommand, "Operatore", DbType.String, NuovoOperatore)
-            _db.AddInParameter(insertCommand, "Firme", DbType.Binary, propImageAsBytes)
+                _db.AddInParameter(insertCommand, "ID", DbType.Int32, ID)
+                _db.AddInParameter(insertCommand, "Operatore", DbType.String, NuovoOperatore)
+                _db.AddInParameter(insertCommand, "Firme", DbType.Binary, propImageAsBytes)
 
-            Dim rowsAffected As Integer? = _db.ExecuteNonQuery(insertCommand)
+                Dim rowsAffected As Integer? = _db.ExecuteNonQuery(insertCommand)
 
-            If Not rowsAffected Is Nothing Then
-                Return rowsAffected
-            End If
+                If Not rowsAffected Is Nothing Then
+                    Return rowsAffected
+                End If
+
+            End Using
 
         Catch ex As Exception
             MessageBox.Show("Errore insertOperatore : " & ex.Message)
         End Try
-
 
     End Function
 
@@ -134,23 +135,38 @@ Public Class frmOperatori
         Dim NomeNuovoOperatore As String = txtNewNomeOperatore.Text
         Dim CognomeNomeNuovo As String = CognomeNuovoOperatore & " " & NomeNuovoOperatore
         Dim ID As Integer = contatore()
+        Dim dResult As DialogResult
 
+        PictureBox1.BackgroundImage.Dispose()
 
         Try
             Dim retVal As Integer? = inserisciNuovoOperatore(ID, CognomeNomeNuovo)
 
-            If retVal = 1 Then
-
+            If Not retVal Is Nothing Then
+                RiempiComboOperatori()
+                txtNewNomeOperatore.Text = String.Empty
+                txtNewCognomeOperatore.Text = String.Empty
+                creaMsgBox("Nuovo Opearore Aggiunto !", "Aggiungi Nuovo Operatore", MessageBoxButtons.OKCancel)
+            Else
+                txtNewNomeOperatore.Text = String.Empty
+                txtNewCognomeOperatore.Text = String.Empty
+                dResult = creaMsgBox("ERRORE Aggiungi Nuovo Operatore!", "Aggiungi Nuovo Operatore", MessageBoxButtons.OKCancel)
+                If dResult = DialogResult.Cancel Then
+                    Exit Sub
+                End If
             End If
-
 
         Catch ex As Exception
             MessageBox.Show("Errore insertOperatore : " & ex.Message)
         End Try
 
-
-
     End Sub
+
+    Public Function creaMsgBox(message As String, caption As String, buttons As MessageBoxButtons) As DialogResult
+        Dim result As DialogResult
+        result = MessageBox.Show(message, caption, buttons)
+        Return result
+    End Function
 
     'Private Sub validateUserEntry()
     '    ' Checks the value of the text.

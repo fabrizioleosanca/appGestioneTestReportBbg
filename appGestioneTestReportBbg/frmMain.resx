@@ -489,7 +489,7 @@
   <data name="btnAggiungiFornitoriStrumMate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsOAAALDgFAvuFBAAADBklE
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsNAAALDQHtB8AsAAADBklE
         QVRYR8WXW0hUURiF93sU3aPoRlEUBUX0UA9Z9tBLYQ9dELqY2WB5j0GEyDIRNMvCssxRCUlIHS9R2EMv
         aaWmZnlJxZSM0iRKg6CRMvpb65wtjjIWiG0XfMPMmsP+9pw55x9GiciU4rM0ic/SJNbDtKDbss5ZahQ6
         rQ3MDrkjmQ/6Jp30sl6Jze6WxPz3FgHn2+RQSofEurotrt37KHSrpafcEpfTPak4s96Kf2yzZJX3ieNq
@@ -595,9 +595,6 @@
   </data>
   <metadata name="DbGestTestReportDataSetBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>617, 19</value>
-  </metadata>
-  <metadata name="DbGestTestReportDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>169, 17</value>
   </metadata>
   <metadata name="DbGestTestReportDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>169, 17</value>
