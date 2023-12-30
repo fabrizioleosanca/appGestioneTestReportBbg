@@ -689,9 +689,6 @@ Public Class frmNuovoDaEsistenteTestReportTre
 
     End Function
 
-
-
-
 #End Region
 
 #Region "Funzioni Utility"

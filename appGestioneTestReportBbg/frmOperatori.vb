@@ -25,47 +25,85 @@ Public Class frmOperatori
     End Sub
 
     Public Sub RiempiComboOperatori()
+        cmbSelezionaOperatore.Items.Clear()
+        cmbCancellaOperatore.Items.Clear()
+
         Dim cmdOperatori As DbCommand
         Dim strSQLGetOperatori As String = "getOperatori"
         cmdOperatori = _db.GetStoredProcCommand(strSQLGetOperatori)
         Using datareader As IDataReader = _db.ExecuteReader(cmdOperatori)
             While datareader.Read
-                cmbSelezionaOperatore.Items.Clear()
-                cmbCancellaOperatore.Items.Clear()
                 cmbSelezionaOperatore.Items.Add(datareader("Operatore"))
                 cmbCancellaOperatore.Items.Add(datareader("Operatore"))
             End While
         End Using
     End Sub
 
+    Private Sub btnApriFirmaUpdate_Click(sender As Object, e As EventArgs) Handles btnApriFirmaUpdate.Click
+
+    End Sub
+
     Private Sub cmbSelezionaOperatore_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSelezionaOperatore.SelectedIndexChanged
-        Dim strOperatoreParam As String
-        Dim dataReader As IDataReader
-        strOperatoreParam = cmbSelezionaOperatore.SelectedItem.ToString
+        GetOperatorePerUpdate()
+    End Sub
+
+    Public Sub GetOperatorePerUpdate()
         Dim strConn As String = ConfigurationManager.ConnectionStrings("dbConnStrRete").ConnectionString
-        Dim cmdGetImg As SqlCommand
+        Dim valParameter As String = cmbSelezionaOperatore.SelectedItem.ToString
+        Using connection As New SqlConnection(strConn)
+            connection.Open()
+            ' Start a local transaction.
+            Dim sqlTran As SqlTransaction = connection.BeginTransaction()
+            Dim reader As SqlDataReader
+            ' Enlist a command in the current transaction.
+            Dim command As SqlCommand = connection.CreateCommand()
+            command.Transaction = sqlTran
+            Try
+                ' Execute two separate commands.
+                command.CommandText = "SELECT [ID] ,[Operatore] ,[Firme] FROM [dbo].[tblOperatore] WHERE (Operatore = @Operatore)"
+                Dim OpParameter As SqlParameter = New SqlParameter
+                OpParameter.ParameterName = "@Operatore"
+                OpParameter.SqlDbType = SqlDbType.NVarChar
+                OpParameter.Direction = ParameterDirection.Input
+                OpParameter.Value = valParameter
+                command.Parameters.Add(OpParameter)
+                reader = command.ExecuteReader()
+                While reader.Read
+                    txtUpdateNome.Text = reader("Operatore").ToString
+                End While
+                reader.Close()
 
-        Using conn As SqlConnection = New SqlConnection
-            conn.ConnectionString = strConn
-            conn.Open()
-            cmdGetImg = New SqlCommand("SELECT [ID]
-                                              ,[Operatore]
-                                              ,[Firme]
-                                        FROM [dbo].[tblOperatore]
-                                        WHERE  (Operatore = @Operatore)", conn)
+                command.CommandText = "SELECT [Operatore] ,[Firme] FROM [dbo].[tblOperatore] WHERE (Operatore = @Operatore2)"
+                Dim OpParameter2 As SqlParameter = New SqlParameter
+                OpParameter2.ParameterName = "@Operatore2"
+                OpParameter2.SqlDbType = SqlDbType.NVarChar
+                OpParameter2.Direction = ParameterDirection.Input
+                OpParameter2.Value = valParameter
+                command.Parameters.Add(OpParameter2)
+                reader = command.ExecuteReader()
+                While reader.Read
+                    Dim imageData As Byte() = DirectCast(reader("Firme"), Byte())
+                    Dim ms As New MemoryStream(imageData, 0, imageData.Length)
+                    Dim img As Image = Image.FromStream(ms, True)
+                    'Assign the image object to the picture box
+                    PictureBox2.BackgroundImage = img
+                End While
+                reader.Close()
+
+                ' Commit the transaction.
+                sqlTran.Commit()
+            Catch ex As Exception
+                MessageBox.Show("Errore GetOperatori : " & ex.Message)
 
 
-
+                Try
+                    ' Attempt to roll back the transaction.
+                    sqlTran.Rollback()
+                Catch exRollback As Exception
+                    MessageBox.Show("Errore Transazione : Rollback " & exRollback.Message)
+                End Try
+            End Try
         End Using
-
-        Using dbSelectCommand As DbCommand = _db.GetStoredProcCommand("getOperatorePerUpdate")
-            _db.AddInParameter(dbSelectCommand, "Operatore", DbType.String, strOperatoreParam)
-            dataReader = _db.ExecuteReader(dbSelectCommand)
-            While dataReader.Read
-                txtUpdateNome.Text = dataReader("Operatore").ToString
-            End While
-        End Using
-
 
     End Sub
 
@@ -129,9 +167,6 @@ Public Class frmOperatori
         Dim curFileNameNuovoOperatore As String
         Dim newFileNameImageFirma As String
 
-        PictureBox1.Dispose()
-        PictureBox1.BackgroundImage = Nothing
-
         'Immagine firma operatore nuova
         curFileNameNuovoOperatore = PathImmagineFirma
 
@@ -177,6 +212,7 @@ Public Class frmOperatori
         Dim ID As Integer = contatore()
         Dim dResult As DialogResult
 
+        'FONDAMENTALE senno trova l'indirizzo di memoria occupato
         PictureBox1.BackgroundImage.Dispose()
 
         Try
@@ -186,6 +222,7 @@ Public Class frmOperatori
                 RiempiComboOperatori()
                 txtNewNomeOperatore.Text = String.Empty
                 txtNewCognomeOperatore.Text = String.Empty
+                PictureBox1.BackgroundImage = Nothing
                 creaMsgBox("Nuovo Opearore Aggiunto !", "Aggiungi Nuovo Operatore", MessageBoxButtons.OKCancel)
             Else
                 txtNewNomeOperatore.Text = String.Empty
