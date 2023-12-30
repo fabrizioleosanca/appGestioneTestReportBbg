@@ -42,20 +42,20 @@ Partial Class frmOperatori
         Me.btnApriFileFirma = New Telerik.WinControls.UI.RadButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblFirmaOperatore = New Telerik.WinControls.UI.RadLabel()
+        Me.txtNewNomeOperatore = New Telerik.WinControls.UI.RadTextBox()
         Me.lblNuovoNomeOperatore = New Telerik.WinControls.UI.RadLabel()
         Me.RGBCambiaNomeOperatore = New Telerik.WinControls.UI.RadGroupBox()
+        Me.btnApriFirmaUpdate = New Telerik.WinControls.UI.RadButton()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.txtUpdateNome = New Telerik.WinControls.UI.RadTextBox()
         Me.lblUpdateNome = New Telerik.WinControls.UI.RadLabel()
         Me.lblSelezionaOperatore = New Telerik.WinControls.UI.RadLabel()
         Me.cmbSelezionaOperatore = New System.Windows.Forms.ComboBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.rgbCancellaOperatore = New Telerik.WinControls.UI.RadGroupBox()
-        Me.lblCancellaNomeOperatore = New Telerik.WinControls.UI.RadLabel()
-        Me.txtNewNomeOperatore = New Telerik.WinControls.UI.RadTextBox()
         Me.cmbCancellaOperatore = New System.Windows.Forms.ComboBox()
-        Me.btnApriFirmaUpdate = New Telerik.WinControls.UI.RadButton()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
+        Me.lblCancellaNomeOperatore = New Telerik.WinControls.UI.RadLabel()
         CType(Me.RadCommandBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RGBAggiungiOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RGBAggiungiOperatore.SuspendLayout()
@@ -64,19 +64,19 @@ Partial Class frmOperatori
         CType(Me.btnApriFileFirma, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblFirmaOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtNewNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblNuovoNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RGBCambiaNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RGBCambiaNomeOperatore.SuspendLayout()
+        CType(Me.btnApriFirmaUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtUpdateNome, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblUpdateNome, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblSelezionaOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rgbCancellaOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rgbCancellaOperatore.SuspendLayout()
         CType(Me.lblCancellaNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtNewNomeOperatore, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnApriFirmaUpdate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RadCommandBar1
@@ -244,6 +244,13 @@ Partial Class frmOperatori
         Me.lblFirmaOperatore.Text = "Firma Operatore"
         Me.lblFirmaOperatore.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
         '
+        'txtNewNomeOperatore
+        '
+        Me.txtNewNomeOperatore.Location = New System.Drawing.Point(125, 29)
+        Me.txtNewNomeOperatore.Name = "txtNewNomeOperatore"
+        Me.txtNewNomeOperatore.Size = New System.Drawing.Size(322, 20)
+        Me.txtNewNomeOperatore.TabIndex = 1
+        '
         'lblNuovoNomeOperatore
         '
         Me.lblNuovoNomeOperatore.AutoSize = False
@@ -270,6 +277,36 @@ Partial Class frmOperatori
         Me.RGBCambiaNomeOperatore.Size = New System.Drawing.Size(464, 171)
         Me.RGBCambiaNomeOperatore.TabIndex = 3
         Me.RGBCambiaNomeOperatore.Text = "Cambia Nome Operatore BBG"
+        '
+        'btnApriFirmaUpdate
+        '
+        Me.btnApriFirmaUpdate.Location = New System.Drawing.Point(372, 86)
+        Me.btnApriFirmaUpdate.Name = "btnApriFirmaUpdate"
+        Me.btnApriFirmaUpdate.Size = New System.Drawing.Size(72, 68)
+        Me.btnApriFirmaUpdate.TabIndex = 6
+        Me.btnApriFirmaUpdate.Text = "Apri File Firma Operatore"
+        Me.btnApriFirmaUpdate.TextWrap = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.White
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox2.Location = New System.Drawing.Point(146, 86)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(220, 68)
+        Me.PictureBox2.TabIndex = 6
+        Me.PictureBox2.TabStop = False
+        '
+        'RadLabel1
+        '
+        Me.RadLabel1.AutoSize = False
+        Me.RadLabel1.Location = New System.Drawing.Point(35, 112)
+        Me.RadLabel1.Name = "RadLabel1"
+        Me.RadLabel1.Size = New System.Drawing.Size(105, 18)
+        Me.RadLabel1.TabIndex = 5
+        Me.RadLabel1.Text = "Firma Operatore"
+        Me.RadLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
         '
         'txtUpdateNome
         '
@@ -322,6 +359,14 @@ Partial Class frmOperatori
         Me.rgbCancellaOperatore.TabIndex = 4
         Me.rgbCancellaOperatore.Text = "Cancella Operatore Dal Database"
         '
+        'cmbCancellaOperatore
+        '
+        Me.cmbCancellaOperatore.FormattingEnabled = True
+        Me.cmbCancellaOperatore.Location = New System.Drawing.Point(122, 27)
+        Me.cmbCancellaOperatore.Name = "cmbCancellaOperatore"
+        Me.cmbCancellaOperatore.Size = New System.Drawing.Size(322, 21)
+        Me.cmbCancellaOperatore.TabIndex = 7
+        '
         'lblCancellaNomeOperatore
         '
         Me.lblCancellaNomeOperatore.AutoSize = False
@@ -331,51 +376,6 @@ Partial Class frmOperatori
         Me.lblCancellaNomeOperatore.TabIndex = 0
         Me.lblCancellaNomeOperatore.Text = "Nome e Cognome"
         Me.lblCancellaNomeOperatore.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'txtNewNomeOperatore
-        '
-        Me.txtNewNomeOperatore.Location = New System.Drawing.Point(125, 29)
-        Me.txtNewNomeOperatore.Name = "txtNewNomeOperatore"
-        Me.txtNewNomeOperatore.Size = New System.Drawing.Size(322, 20)
-        Me.txtNewNomeOperatore.TabIndex = 1
-        '
-        'cmbCancellaOperatore
-        '
-        Me.cmbCancellaOperatore.FormattingEnabled = True
-        Me.cmbCancellaOperatore.Location = New System.Drawing.Point(122, 27)
-        Me.cmbCancellaOperatore.Name = "cmbCancellaOperatore"
-        Me.cmbCancellaOperatore.Size = New System.Drawing.Size(322, 21)
-        Me.cmbCancellaOperatore.TabIndex = 7
-        '
-        'btnApriFirmaUpdate
-        '
-        Me.btnApriFirmaUpdate.Location = New System.Drawing.Point(372, 86)
-        Me.btnApriFirmaUpdate.Name = "btnApriFirmaUpdate"
-        Me.btnApriFirmaUpdate.Size = New System.Drawing.Size(72, 68)
-        Me.btnApriFirmaUpdate.TabIndex = 6
-        Me.btnApriFirmaUpdate.Text = "Apri File Firma Operatore"
-        Me.btnApriFirmaUpdate.TextWrap = True
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.White
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox2.Location = New System.Drawing.Point(146, 86)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(220, 68)
-        Me.PictureBox2.TabIndex = 6
-        Me.PictureBox2.TabStop = False
-        '
-        'RadLabel1
-        '
-        Me.RadLabel1.AutoSize = False
-        Me.RadLabel1.Location = New System.Drawing.Point(35, 112)
-        Me.RadLabel1.Name = "RadLabel1"
-        Me.RadLabel1.Size = New System.Drawing.Size(105, 18)
-        Me.RadLabel1.TabIndex = 5
-        Me.RadLabel1.Text = "Firma Operatore"
-        Me.RadLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmOperatori
         '
@@ -398,20 +398,20 @@ Partial Class frmOperatori
         CType(Me.btnApriFileFirma, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblFirmaOperatore, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtNewNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblNuovoNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RGBCambiaNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RGBCambiaNomeOperatore.ResumeLayout(False)
         Me.RGBCambiaNomeOperatore.PerformLayout()
+        CType(Me.btnApriFirmaUpdate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtUpdateNome, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblUpdateNome, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblSelezionaOperatore, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rgbCancellaOperatore, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rgbCancellaOperatore.ResumeLayout(False)
         CType(Me.lblCancellaNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtNewNomeOperatore, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnApriFirmaUpdate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

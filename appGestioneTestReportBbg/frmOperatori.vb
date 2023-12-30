@@ -1,4 +1,6 @@
-﻿Imports System.Data.Common
+﻿Imports System.Configuration
+Imports System.Data.Common
+Imports System.Data.SqlClient
 Imports System.IO
 Imports Microsoft.Practices.EnterpriseLibrary.Data
 
@@ -36,11 +38,48 @@ Public Class frmOperatori
         End Using
     End Sub
 
+    Private Sub cmbSelezionaOperatore_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSelezionaOperatore.SelectedIndexChanged
+        Dim strOperatoreParam As String
+        Dim dataReader As IDataReader
+        strOperatoreParam = cmbSelezionaOperatore.SelectedItem.ToString
+        Dim strConn As String = ConfigurationManager.ConnectionStrings("dbConnStrRete").ConnectionString
+        Dim cmdGetImg As SqlCommand
+
+        Using conn As SqlConnection = New SqlConnection
+            conn.ConnectionString = strConn
+            conn.Open()
+            cmdGetImg = New SqlCommand("SELECT [ID]
+                                              ,[Operatore]
+                                              ,[Firme]
+                                        FROM [dbo].[tblOperatore]
+                                        WHERE  (Operatore = @Operatore)", conn)
+
+
+
+        End Using
+
+        Using dbSelectCommand As DbCommand = _db.GetStoredProcCommand("getOperatorePerUpdate")
+            _db.AddInParameter(dbSelectCommand, "Operatore", DbType.String, strOperatoreParam)
+            dataReader = _db.ExecuteReader(dbSelectCommand)
+            While dataReader.Read
+                txtUpdateNome.Text = dataReader("Operatore").ToString
+            End While
+        End Using
+
+
+    End Sub
+
+    Private Sub cmdModificaOperatore_Click(sender As Object, e As EventArgs) Handles cmdModificaOperatore.Click
+
+    End Sub
+
     Public Function updateOperatori(ID As Integer, Operatore As String) As Integer
+
         Dim updateCommand As DbCommand = Nothing
         Dim rowsAffected As Integer
 
         Dim strQuery As String = "UPDATE tblOperatore SET ID = @ID , Operatore = @Operatore WHERE Operatore = @Operatore"
+
         Try
             updateCommand = _db.GetSqlStringCommand(strQuery)
 
@@ -49,6 +88,7 @@ Public Class frmOperatori
             _db.AddInParameter(updateCommand, "imgFirmaOperatore", DbType.Binary, propImageAsBytes)
 
             rowsAffected = _db.ExecuteNonQuery(updateCommand)
+
         Catch ex As Exception
             MessageBox.Show("Errore updateOperatori : " & ex.Message)
         End Try
@@ -167,24 +207,6 @@ Public Class frmOperatori
         result = MessageBox.Show(message, caption, buttons)
         Return result
     End Function
-
-    'Private Sub validateUserEntry()
-    '    ' Checks the value of the text.
-    '    ' Initializes the variables to pass to the MessageBox.Show method.
-    '    Dim message As String = "You did not enter a server name. Cancel this operation?"
-    '        Dim caption As String = "Error Detected in Input"
-    '        Dim buttons As MessageBoxButtons = MessageBoxButtons.YesNo
-    '        Dim result As DialogResult
-
-    '        ' Displays the MessageBox.
-    '        result = MessageBox.Show(message, caption, buttons)
-    '        If result = System.Windows.Forms.DialogResult.Yes Then
-    '            ' Closes the parent form.
-    '            Me.Close()
-    '        End If
-
-    'End Sub
-
 
     Public Function contatoreNoAddUno() As Integer
         Dim i As Integer?
