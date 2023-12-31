@@ -14,8 +14,7 @@ Public Class frmOperatori
     Public Property emptyRow As DataRow
     Public Property PathImmagineFirma As String
     Public Property PathImmagineFirmaUpdate As String
-
-    Public IDUpdate As Integer
+    Public Property IDUpdate As Integer
 
 
     Public Sub New()
