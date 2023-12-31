@@ -3,6 +3,7 @@ Imports System.Data.Common
 Imports System.Data.SqlClient
 Imports System.IO
 Imports Microsoft.Practices.EnterpriseLibrary.Data
+Imports Telerik.Data.Expressions
 
 Public Class frmOperatori
 
@@ -13,6 +14,9 @@ Public Class frmOperatori
     Public Property rigaOrdNum As Integer?
     Public Property emptyRow As DataRow
     Public Property PathImmagineFirma As String
+    Public Property PathImmagineFirmaUpdate As String
+
+    Public IDUpdate As Integer
 
 
     Public Sub New()
@@ -21,7 +25,6 @@ Public Class frmOperatori
 
     Private Sub frmOperatori_Load(sender As Object, e As EventArgs) Handles Me.Load
         RiempiComboOperatori()
-
     End Sub
 
     Public Sub RiempiComboOperatori()
@@ -39,7 +42,31 @@ Public Class frmOperatori
         End Using
     End Sub
 
+
     Private Sub btnApriFirmaUpdate_Click(sender As Object, e As EventArgs) Handles btnApriFirmaUpdate.Click
+        Dim noPhoto As String
+
+        Dim pathFirma As String = Application.StartupPath
+        Dim pathSelezionaImmagine As String = pathFirma.Replace("\bin\Debug", "\Immagini")
+        Dim pathNoPhoto As String = pathFirma.Replace("\bin\Debug", "\Immagini\NoImmagineFirma.png")
+
+        OpenFileDialog1.Title = "Seleziona La Nuova Immagine Della Firma Del Nuovo Operatore"
+        OpenFileDialog1.InitialDirectory = pathSelezionaImmagine
+        OpenFileDialog1.Filter = "File Immagine(*.PNG;*.JPG;*.GIF)|*.PNG;*.JPG;*.GIF|Tutti i Files (*.*)|*.*"
+
+        Try
+
+            ' Carica l'immagine selezionata nel controllo PictureBox
+            If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+                PathImmagineFirmaUpdate = OpenFileDialog1.FileName.ToString
+                PictureBox2.BackgroundImage = Image.FromFile(PathImmagineFirmaUpdate)
+            Else
+                PictureBox2.Image = Image.FromFile(pathNoPhoto)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Errore frmOperatori : " & ex.Message)
+        End Try
 
     End Sub
 
@@ -52,14 +79,14 @@ Public Class frmOperatori
         Dim valParameter As String = cmbSelezionaOperatore.SelectedItem.ToString
         Using connection As New SqlConnection(strConn)
             connection.Open()
-            ' Start a local transaction.
+            ' Avvia una transazione locale
             Dim sqlTran As SqlTransaction = connection.BeginTransaction()
             Dim reader As SqlDataReader
-            ' Enlist a command in the current transaction.
+            ' Inserisci un comando nella transazione corrente.
             Dim command As SqlCommand = connection.CreateCommand()
             command.Transaction = sqlTran
             Try
-                ' Execute two separate commands.
+                ' Esegui due comandi separati.
                 command.CommandText = "SELECT [ID] ,[Operatore] ,[Firme] FROM [dbo].[tblOperatore] WHERE (Operatore = @Operatore)"
                 Dim OpParameter As SqlParameter = New SqlParameter
                 OpParameter.ParameterName = "@Operatore"
@@ -70,6 +97,7 @@ Public Class frmOperatori
                 reader = command.ExecuteReader()
                 While reader.Read
                     txtUpdateNome.Text = reader("Operatore").ToString
+                    IDUpdate = reader("ID").ToString
                 End While
                 reader.Close()
 
@@ -85,19 +113,18 @@ Public Class frmOperatori
                     Dim imageData As Byte() = DirectCast(reader("Firme"), Byte())
                     Dim ms As New MemoryStream(imageData, 0, imageData.Length)
                     Dim img As Image = Image.FromStream(ms, True)
-                    'Assign the image object to the picture box
+                    'Assegnare l'oggetto immagine alla casella immagine
                     PictureBox2.BackgroundImage = img
                 End While
                 reader.Close()
 
-                ' Commit the transaction.
+                ' Effettua la transazione.
                 sqlTran.Commit()
             Catch ex As Exception
                 MessageBox.Show("Errore GetOperatori : " & ex.Message)
 
-
                 Try
-                    ' Attempt to roll back the transaction.
+                    ' Tentativo di ripristinare la transazione.
                     sqlTran.Rollback()
                 Catch exRollback As Exception
                     MessageBox.Show("Errore Transazione : Rollback " & exRollback.Message)
@@ -107,25 +134,104 @@ Public Class frmOperatori
 
     End Sub
 
-    Private Sub cmdModificaOperatore_Click(sender As Object, e As EventArgs) Handles cmdModificaOperatore.Click
+    Private Sub cmdCancellaOperatore_Click(sender As Object, e As EventArgs) Handles cmdCancellaOperatore.Click
+        Dim retValCanc As Integer?
+        Dim strOperatoreDaCancellare As String
+        strOperatoreDaCancellare = cmbCancellaOperatore.SelectedItem.ToString
+        Try
+            retValCanc = CancellaOperatore(strOperatoreDaCancellare)
+            If Not retValCanc Is Nothing Then
+                RiempiComboOperatori()
+                MessageBox.Show($"Operatore {strOperatoreDaCancellare} Cancellato", "Cancella Operatore")
+                cmbCancellaOperatore.Text = String.Empty
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Errore Cancella Operatore " & ex.Message)
+        End Try
 
+    End Sub
+
+    Public Function CancellaOperatore(cancOperatore As String) As Integer
+        Dim rowsAffected As Integer
+        Dim strQuery As String = "DELETE FROM [dbo].[tblOperatore] WHERE Operatore=@Operatore"
+        Try
+            Using deleteCommand As DbCommand = _db.GetSqlStringCommand(strQuery)
+                _db.AddInParameter(deleteCommand, "Operatore", DbType.String, cancOperatore)
+                rowsAffected = _db.ExecuteNonQuery(deleteCommand)
+                Return rowsAffected
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Errore Delete Sql Operatore " & ex.Message)
+        End Try
+    End Function
+
+
+    Private Sub cmdModificaOperatore_Click(sender As Object, e As EventArgs) Handles cmdModificaOperatore.Click
+        Dim updCognomeNome As String
+        Dim retVal As Integer?
+        Dim dResult As DialogResult
+
+
+        'FONDAMENTALE senno trova l'indirizzo di memoria occupato
+        PictureBox2.BackgroundImage.Dispose()
+
+        Try
+            updCognomeNome = txtUpdateNome.Text
+            'ID dichiarato campo della classe
+            retVal = updateOperatori(IDUpdate, updCognomeNome)
+
+            If Not retVal Is Nothing Then
+                RiempiComboOperatori()
+                cmbSelezionaOperatore.Text = String.Empty
+                txtUpdateNome.Text = String.Empty
+                PictureBox2.BackgroundImage = Nothing
+                dResult = creaMsgBox("Operatore Aggiornato !", "Aggiorna Operatore", MessageBoxButtons.OKCancel)
+                If dResult = DialogResult.OK Then
+                    dResult.ToString()
+                End If
+            Else
+                txtUpdateNome.Text = String.Empty
+                cmbSelezionaOperatore.Text = String.Empty
+                dResult = creaMsgBox("ERRORE Aggiungi Nuovo Operatore!", "Aggiungi Nuovo Operatore", MessageBoxButtons.OKCancel)
+                If dResult = DialogResult.Cancel Then
+                    Exit Sub
+                End If
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Errore Update " & ex.Message)
+        End Try
     End Sub
 
     Public Function updateOperatori(ID As Integer, Operatore As String) As Integer
 
         Dim updateCommand As DbCommand = Nothing
         Dim rowsAffected As Integer
+        Dim curFileNameUpdateOperatore As String
 
-        Dim strQuery As String = "UPDATE tblOperatore SET ID = @ID , Operatore = @Operatore WHERE Operatore = @Operatore"
+        'Immagine firma operatore da aggiornare
+        curFileNameUpdateOperatore = PathImmagineFirmaUpdate
+
+        Using fsAggiornaOperatore As FileStream = New FileStream(curFileNameUpdateOperatore, FileMode.Open)
+            propImageAsBytesUpdate = New Byte(fsAggiornaOperatore.Length - 1) {}
+            fsAggiornaOperatore.Read(propImageAsBytesUpdate, 0, propImageAsBytesUpdate.Length)
+            fsAggiornaOperatore.Close()
+        End Using
+
+
+        Dim strQuery As String = "UPDATE tblOperatore SET ID = @ID , Operatore = @Operatore , Firme = @Firme WHERE ID = @ID"
 
         Try
             updateCommand = _db.GetSqlStringCommand(strQuery)
 
             _db.AddInParameter(updateCommand, "ID", DbType.Int32, ID)
             _db.AddInParameter(updateCommand, "Operatore", DbType.String, Operatore)
-            _db.AddInParameter(updateCommand, "imgFirmaOperatore", DbType.Binary, propImageAsBytes)
+            _db.AddInParameter(updateCommand, "Firme", DbType.Binary, propImageAsBytesUpdate)
 
             rowsAffected = _db.ExecuteNonQuery(updateCommand)
+
+            Return rowsAffected
 
         Catch ex As Exception
             MessageBox.Show("Errore updateOperatori : " & ex.Message)

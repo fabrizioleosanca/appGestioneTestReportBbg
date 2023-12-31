@@ -57,6 +57,7 @@ Module modProp
     Public Property propNumDDTLottoMaterialeStampa As String
     Public Property propLottoStampa As String
     Public Property propImageAsBytes As Byte()
+    Public Property propImageAsBytesUpdate As Byte()
 #End Region
 
 #Region "Proprieta Primo Pezzo"

@@ -85,7 +85,7 @@ Partial Class frmOperatori
         Me.RadCommandBar1.Location = New System.Drawing.Point(0, 0)
         Me.RadCommandBar1.Name = "RadCommandBar1"
         Me.RadCommandBar1.Rows.AddRange(New Telerik.WinControls.UI.CommandBarRowElement() {Me.CommandBarRowElement1})
-        Me.RadCommandBar1.Size = New System.Drawing.Size(488, 56)
+        Me.RadCommandBar1.Size = New System.Drawing.Size(488, 81)
         Me.RadCommandBar1.TabIndex = 0
         '
         'CommandBarRowElement1
