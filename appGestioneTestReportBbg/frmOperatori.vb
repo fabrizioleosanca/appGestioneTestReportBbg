@@ -3,7 +3,6 @@ Imports System.Data.Common
 Imports System.Data.SqlClient
 Imports System.IO
 Imports Microsoft.Practices.EnterpriseLibrary.Data
-Imports Telerik.Data.Expressions
 
 Public Class frmOperatori
 
